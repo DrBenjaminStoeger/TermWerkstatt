@@ -1,0 +1,1711 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Termwerkstatt – Terme aufstellen und deuten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#e7edf6; --paper:#fcfdff; --grid:#d5e1f1; --ink:#15213a; --muted:#55627c; --line:#bfcbdc;
+  --accent:#1f3fa8; --on-accent:#ffffff;
+  --c1:#1f56d6; --c2:#e8651a; --c3:#128f5e; --c4:#cc2f86;
+  --m1:#d3defd; --m2:#ffdcc2; --m3:#c8efde; --m4:#fbd0e5;
+  --wood:#d39a35; --head:#cf3a2b; --tile:#c2cddd; --wax:#f3dfa6; --pd:#15213a; --pl:#c2cddd;
+  --gold:#eda80c; --ok:#0f7049; --ok-bg:#dcf3e8; --bad:#b32d25; --bad-bg:#fbe4e1;
+  --tip:#fff0b3; --tip-ink:#574300; --key:#ffffff; --keyshade:#b9c6d9;
+  --display:"Bricolage Grotesque","Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1b17; --paper:#152c26; --grid:#1f4038; --ink:#eef4ee; --muted:#a9bcb3; --line:#2f5449;
+    --accent:#ffd84a; --on-accent:#221c00;
+    --c1:#86b4ff; --c2:#ffa25f; --c3:#62dfa5; --c4:#ff90ca;
+    --m1:#21407a; --m2:#6a3d1a; --m3:#1d5740; --m4:#6a2850;
+    --wood:#e6bc6a; --head:#ff7262; --tile:#57756b; --wax:#eadaa6; --pd:#030807; --pl:#dbe7e1;
+    --gold:#ffd84a; --ok:#62dfa5; --ok-bg:#173d2e; --bad:#ffa399; --bad-bg:#4a2320;
+    --tip:#4a4118; --tip-ink:#ffe89a; --key:#1d3d35; --keyshade:#0a1512;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1b17; --paper:#152c26; --grid:#1f4038; --ink:#eef4ee; --muted:#a9bcb3; --line:#2f5449;
+  --accent:#ffd84a; --on-accent:#221c00;
+  --c1:#86b4ff; --c2:#ffa25f; --c3:#62dfa5; --c4:#ff90ca;
+  --m1:#21407a; --m2:#6a3d1a; --m3:#1d5740; --m4:#6a2850;
+  --wood:#e6bc6a; --head:#ff7262; --tile:#57756b; --wax:#eadaa6; --pd:#030807; --pl:#dbe7e1;
+  --gold:#ffd84a; --ok:#62dfa5; --ok-bg:#173d2e; --bad:#ffa399; --bad-bg:#4a2320;
+  --tip:#4a4118; --tip-ink:#ffe89a; --key:#1d3d35; --keyshade:#0a1512;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);font-size:17px;-webkit-text-size-adjust:100%}
+@media (min-width:700px){html{font-size:18px}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.45;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-user-select:none;user-select:none}
+button:focus-visible,input:focus-visible{outline:3px solid var(--c2);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0}
+i{font-family:Georgia,"Times New Roman",serif;font-style:italic}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:16px clamp(12px,3vw,28px) 40px}
+.paper{background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px;border:1.5px solid var(--line);border-radius:6px}
+.k1,.k2,.k3,.k4{font-weight:700;padding:.02em .32em;border-radius:.3em;white-space:nowrap}
+.k1{background:var(--m1)}.k2{background:var(--m2)}.k3{background:var(--m3)}.k4{background:var(--m4)}
+
+/* ---------- Startseite ---------- */
+.hero{display:grid;gap:18px;align-items:center;margin:6px 0 26px}
+@media (min-width:760px){.hero{grid-template-columns:1.1fr 1fr}}
+.hero h1{font-size:clamp(2.5rem,7vw,4.2rem);font-weight:800;letter-spacing:-.02em}
+.hero p.lead{font-size:1.1rem;max-width:34em;margin-top:10px;color:var(--muted)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.95rem;color:var(--muted)}
+.stats b{color:var(--ink);font-size:1.15rem;font-family:var(--display)}
+.gold{color:var(--gold)}
+.demo{padding:18px 16px 14px}
+.demo svg{display:block;width:100%;height:110px}
+.demo .termbig{font-size:1.5rem;margin-top:10px;text-align:center}
+.demo .cap{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
+.resume{margin-top:18px}
+.lvl{margin-top:26px}
+.lvl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.lvl-head h2{font-size:1.45rem}
+.lvl-head p{color:var(--muted);font-size:.95rem}
+.lvl-head .cnt{margin-left:auto;font-weight:700;font-size:.95rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:14px}
+.tile{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:center;text-align:left;
+  background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;min-height:84px;
+  box-shadow:0 3px 0 var(--keyshade)}
+.tile:active{transform:translateY(2px);box-shadow:0 1px 0 var(--keyshade)}
+.tile svg{width:72px;height:54px;display:block}
+.tile .tt{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
+.tile .tk{font-size:.82rem;color:var(--muted)}
+.tile .ts{font-size:1rem;letter-spacing:1px;color:var(--line)}
+.tile .ts b{color:var(--gold);font-weight:400}
+.tile.done{border-color:var(--ok)}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.badge{border:1.5px dashed var(--line);border-radius:12px;padding:10px;font-size:.82rem;color:var(--muted);opacity:.75}
+.badge .be{font-size:1.5rem;filter:grayscale(1);opacity:.5}
+.badge b{display:block;color:var(--ink);font-size:.95rem}
+.badge.on{border-style:solid;border-color:var(--gold);opacity:1;background:var(--paper)}
+.badge.on .be{filter:none;opacity:1}
+.foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;align-items:center}
+.foot .sp{flex:1}
+
+/* ---------- Buttons ---------- */
+.btn{min-height:52px;padding:0 22px;border-radius:14px;font-weight:700;font-size:1.02rem;
+  background:var(--paper);border:1.5px solid var(--line);box-shadow:0 3px 0 var(--keyshade)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--keyshade)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.small{min-height:44px;font-size:.92rem;padding:0 14px}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+
+/* ---------- Mission ---------- */
+.mbar{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.back{width:48px;height:48px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line);font-size:1.4rem;flex:none}
+.mt{min-width:0;flex:1}
+.mt h1{font-size:clamp(1.25rem,3.4vw,1.7rem);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mt span{font-size:.85rem;color:var(--muted)}
+.hud{display:flex;gap:14px;align-items:center;font-weight:700;flex:none}
+.hud .st{font-size:1.35rem;letter-spacing:1px;color:var(--line)}
+.hud .st b{color:var(--gold);font-weight:400}
+.dots{display:flex;gap:6px;margin:0 0 12px}
+.dots span{height:8px;flex:1;border-radius:4px;background:var(--line)}
+.dots span.d{background:var(--ok)}
+.dots span.c{background:var(--accent)}
+.mission{display:grid;gap:14px}
+@media (min-width:860px){
+  .mission{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:start}
+  .lab{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px)}
+}
+.lab{padding:14px}
+.mission.b{grid-template-columns:minmax(0,1fr)}
+.mission.b .lab{position:static}
+.mission.b .task{max-width:720px;width:100%;margin:0 auto}
+.lab .actions .btn{flex:0 1 auto}
+.intro{background:var(--paper);border-left:5px solid var(--accent);padding:8px 12px;font-size:1rem;border-radius:0 8px 8px 0}
+.figbox{margin:10px 0 4px}
+.figbox svg{display:block;width:100%;height:clamp(170px,32vh,300px)}
+.ft{font:700 12px var(--body);fill:var(--muted)}
+.fl{font:700 15px var(--body);fill:var(--ink)}
+.ctrl{display:grid;grid-template-columns:52px 1fr 52px;gap:10px;align-items:center;background:var(--paper);
+  border:1.5px solid var(--line);border-radius:14px;padding:8px}
+.ctrl button{height:48px;border-radius:12px;background:var(--bg);font-size:1.5rem;font-weight:700}
+.ctrl .mid{text-align:center}
+.nlab{font-weight:700;font-size:1.05rem}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:var(--line)}
+input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--accent);margin-top:-12px;border:3px solid var(--paper)}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--accent);border:3px solid var(--paper)}
+.live{margin-top:8px;background:var(--paper);border:1.5px solid var(--ok);border-radius:12px;padding:8px 12px;font-size:1rem}
+.live b{font-size:1.15rem}
+.live .lt{display:block;font-size:.85rem;color:var(--muted)}
+.live .lf{color:var(--muted);font-size:.88rem;margin-left:8px;white-space:nowrap}
+.figbox.low svg{height:clamp(110px,18vh,170px)}
+.legend{margin-top:8px;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:8px 12px;font-size:.95rem}
+.legend .lt{display:block;font-size:.85rem;color:var(--muted)}
+.lg{display:flex;gap:8px;align-items:baseline;margin-top:3px}
+.sw{width:14px;height:14px;border-radius:4px;flex:none;transform:translateY(2px)}
+.ln{margin-top:5px;padding-top:5px;border-top:1px dashed var(--line);font-weight:700}
+@media (min-width:760px){.split{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center}}
+.split .actions{justify-content:center}
+.grids{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
+.gbox{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:8px}
+.gbox.bad{border-color:var(--bad)}.gbox.ok{border-color:var(--ok)}
+.gbox h3{font-size:.95rem;text-align:center;margin-bottom:6px}
+.cells{display:grid;gap:3px;--cs:44px}
+.cell{width:var(--cs);height:var(--cs);border-radius:8px;background:var(--bg);position:relative}
+.cell.on::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--c1)}
+.gcount{text-align:center;font-size:.9rem;font-weight:700;margin-top:6px;color:var(--muted)}
+
+.task{background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:16px}
+.stepno{font-size:.88rem;color:var(--muted);font-weight:700}
+.q{font-family:var(--body);font-size:1.18rem;font-weight:700;line-height:1.35;margin:4px 0 14px}
+.fields{display:flex;flex-wrap:wrap;gap:8px}
+.field{display:flex;flex-direction:column;justify-content:space-between;flex:1 1 92px;min-width:92px;border:2px solid var(--line);border-radius:12px;padding:6px 8px 8px;text-align:center;background:var(--bg)}
+.field .la{display:block;font-size:.88rem;color:var(--muted);font-weight:700}
+.field .va{display:block;font-size:1.5rem;font-weight:700;min-height:1.5em;font-variant-numeric:tabular-nums}
+.field .un{font-size:.85rem;font-weight:400;color:var(--muted);margin-left:3px}
+.field.f{border-color:var(--accent);background:var(--paper)}
+.field.f .va::after{content:"";display:inline-block;width:2px;height:1em;background:var(--accent);vertical-align:-.12em;margin-left:2px;animation:blink 1s steps(2) infinite}
+.field.ok{border-color:var(--ok);background:var(--ok-bg)}
+.field.bad{border-color:var(--bad);background:var(--bad-bg)}
+@keyframes blink{50%{opacity:0}}
+.termline{display:flex;align-items:center;gap:8px;border:2px solid var(--accent);border-radius:12px;padding:8px 12px;min-height:60px;font-size:1.5rem;background:var(--bg);flex-wrap:wrap}
+.termline.ok{border-color:var(--ok);background:var(--ok-bg)}
+.termline .nm{color:var(--muted);white-space:nowrap}
+.termline .tv{font-weight:700;word-spacing:.08em}
+.termline .tv:empty::before{content:"Tippe unten deinen Term ein";font-size:.95rem;font-weight:400;color:var(--muted)}
+.termline .car{width:2px;height:1.1em;background:var(--accent);animation:blink 1s steps(2) infinite}
+.pad{display:grid;gap:7px;margin-top:12px}
+.pad.term{grid-template-columns:repeat(5,1fr)}
+.pad.num{grid-template-columns:repeat(5,1fr)}
+.pad.num .del{grid-column:span 3}
+.key{height:54px;border-radius:12px;background:var(--key);border:1.5px solid var(--line);box-shadow:0 3px 0 var(--keyshade);font-size:1.35rem;font-weight:700}
+.key:active{transform:translateY(2px);box-shadow:0 1px 0 var(--keyshade)}
+.key.op{background:var(--m1)}
+.key.var{background:var(--m2)}
+.key.del{background:var(--bg)}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:56px;background:var(--bg);font-size:1.05rem;width:100%}
+.opt .rb{width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.opt.sel{border-color:var(--accent);background:var(--paper)}
+.opt.sel .rb{border-color:var(--accent);background:radial-gradient(var(--accent) 45%,transparent 50%)}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.dead{opacity:.45;text-decoration:line-through}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.pick{border:2px solid var(--line);border-radius:12px;background:var(--bg);padding:8px}
+.pick svg{display:block;width:100%;height:120px}
+.pick.sel{border-color:var(--accent);border-width:3px;background:var(--paper)}
+.pick.ok{border-color:var(--ok);border-width:3px;background:var(--ok-bg)}
+.pick.dead{opacity:.35}
+.note{color:var(--muted);font-size:.98rem}
+.fb{margin-top:12px;border-radius:12px;padding:10px 14px;font-size:1rem}
+.fb.ok{background:var(--ok-bg);border-left:5px solid var(--ok)}
+.fb.bad{background:var(--bad-bg);border-left:5px solid var(--bad)}
+.fb.info{background:var(--bg);border-left:5px solid var(--muted)}
+.tm{font-weight:700;white-space:nowrap;background:var(--paper);border-radius:6px;padding:.05em .35em}
+.alts{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.alts ul,.plain{margin:4px 0 0;padding-left:1.15em}
+.alts li,.plain li{margin:5px 0}
+.ask{margin-top:14px;border:2px solid var(--gold);background:var(--tip);color:var(--tip-ink);border-radius:14px;padding:14px}
+.ask h3{font-size:1.25rem}
+.ask p{margin-top:6px}
+.ask .asklt{font-weight:700;margin-top:10px}
+.ask .actions{flex-direction:column}
+.ask .actions .btn{flex:0 0 auto;min-height:48px}
+.ask .btn{color:var(--ink)}
+.ask .btn.primary{color:var(--on-accent)}
+.ask .btn.danger{color:var(--bad)}
+.fb .pts.no{color:var(--muted)}
+.fb .pts{float:right;font-weight:700;color:var(--ok);margin-left:10px}
+.cmp{border-collapse:collapse;margin-top:8px;font-size:.95rem;font-variant-numeric:tabular-nums}
+.cmp th{text-align:left;font-weight:700;padding:3px 10px 3px 0;white-space:nowrap}
+.cmp td{padding:3px 10px;text-align:center;border-left:1px solid var(--line)}
+.cmp .tok{color:var(--ok);font-weight:700}.cmp .tbad{color:var(--bad);font-weight:700;text-decoration:underline wavy}
+.scroll{overflow-x:auto}
+.tip{margin-top:10px;background:var(--tip);color:var(--tip-ink);border-radius:12px;padding:10px 14px;font-size:1rem}
+.tip b{display:block;font-size:.85rem}
+.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.actions .btn{flex:1 1 130px}
+.fine{font-size:.82rem;color:var(--muted);margin-top:10px}
+
+/* ---------- Overlays ---------- */
+.ov{position:fixed;inset:0;background:rgba(8,14,26,.62);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;
+  padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.sheet{background:var(--paper);color:var(--ink);border-radius:20px;padding:22px;max-width:560px;width:100%;max-height:100%;overflow:auto;border:1.5px solid var(--line)}
+.sheet h2{font-size:1.7rem;font-weight:800}
+.sheet h3{font-size:1.1rem;margin-top:16px}
+.sheet ol,.sheet ul{margin:6px 0 0;padding-left:1.3em}
+.sheet li{margin:4px 0}
+.end{text-align:center}
+.bigst{font-size:3.6rem;line-height:1;letter-spacing:6px;color:var(--line)}
+.bigst b{color:var(--gold);font-weight:400;display:inline-block;animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.bigst b:nth-child(2){animation-delay:.25s}.bigst b:nth-child(3){animation-delay:.5s}
+@keyframes pop{from{transform:scale(0) rotate(-40deg);opacity:0}}
+.learn{text-align:left;background:var(--bg);border-radius:12px;padding:12px 14px;margin-top:14px}
+.newb{margin-top:12px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);
+  padding:10px 18px;border-radius:999px;font-weight:700;z-index:20;animation:rise .3s both;max-width:92vw;text-align:center}
+@keyframes rise{from{transform:translate(-50%,20px);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:420px){.key{height:50px}.cells{--cs:36px}.hud .fl2{display:none}}
+</style>
+</head>
+<body>
+<div id="app" class="wrap"></div>
+<script>
+'use strict';
+/* ================= Hilfsfunktionen ================= */
+var KEY='termwerkstatt-v2';
+function C(k){return 'var(--'+k+')';}
+function fmt(v){if(!isFinite(v))return '–';var r=Math.round(v*100)/100;return String(r).replace('.',',').replace('-','−');}
+function num(s){if(!/^−?\d+(,\d+)?$/.test(s))return null;return parseFloat(s.replace(',','.').replace('−','-'));}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pl(n,s,p){return n+' '+(n===1?s:p);}
+function eq(a,b){return Math.abs(a-b)<1e-9;}
+function it(s){return s.replace(/(^|[^A-Za-zÄÖÜäöüß<>\/&;])([nxa])(?![A-Za-zÄÖÜäöüß<>])/g,'$1<i>$2</i>');}
+function keysOf(str){return str.split('').map(function(c){return c==='*'?'·':c==='-'?'−':c==='^'?'²':c==='/'?':':c;});}
+
+/* ================= Figuren (SVG) ================= */
+function dot(x,y,col,r,ring){
+  r=r||8;
+  return '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(col||C('ink'))+'"/>'+
+    (ring?'<circle cx="'+x+'" cy="'+y+'" r="'+(r+4.5)+'" fill="none" stroke="'+ring+'" stroke-width="2.5"/>':'');
+}
+function tables(n,mode){
+  var w=64,h=40,o='';
+  function ch(x,y,g,i){
+    var c=null;
+    if(mode==='A')c=g==='end'?C('c1'):C('c2');
+    else if(mode==='B')c=(g==='top'||g==='right')?C('c3'):C('c4');
+    else if(mode==='C')c=(g==='left'||g==='right'||i===0)?C('c1'):C('c2');
+    else if(mode==='T')c=g==='top'?C('c3'):g==='bottom'?C('c4'):C('c1');
+    o+='<circle cx="'+x+'" cy="'+y+'" r="10" fill="'+(c||C('ink'))+'"/>';
+  }
+  for(var i=0;i<n;i++){
+    o+='<rect x="'+(i*w+1.5)+'" y="0" width="'+(w-3)+'" height="'+h+'" rx="5" fill="'+C('wood')+'"/>';
+    ch(i*w+w/2,-15,'top',i);ch(i*w+w/2,h+15,'bottom',i);
+  }
+  ch(-15,h/2,mode==='A'?'end':'left',-1);ch(n*w+15,h/2,mode==='A'?'end':'right',-1);
+  return {s:o,x:-26,y:-26,w:n*w+52,h:h+52};
+}
+function plus(n,mode){
+  var d=26,o='',r=9;
+  function c(g){
+    if(mode==='A')return g==='mid'?C('c1'):C('c2');
+    if(mode==='B')return (g==='mid'||g==='r'||g==='l')?C('c3'):C('c4');
+    if(mode==='C')return (g==='r'||g==='l')?C('c3'):C('c4');
+    if(mode==='four')return g==='r'?C('c1'):g==='l'?C('c2'):g==='u'?C('c3'):C('c4');
+    return null;
+  }
+  function wedge(a0,a1,col){
+    var p0=[r*Math.cos(a0*Math.PI/180),r*Math.sin(a0*Math.PI/180)],p1=[r*Math.cos(a1*Math.PI/180),r*Math.sin(a1*Math.PI/180)];
+    return '<path d="M0 0 L'+p0[0].toFixed(2)+' '+p0[1].toFixed(2)+' A'+r+' '+r+' 0 0 1 '+p1[0].toFixed(2)+' '+p1[1].toFixed(2)+' Z" fill="'+col+'"/>';
+  }
+  for(var k=1;k<=n;k++){o+=dot(k*d,0,c('r'));o+=dot(-k*d,0,c('l'));o+=dot(0,k*d,c('d'));o+=dot(0,-k*d,c('u'));}
+  if(mode==='C'){
+    /* Mittelpunkt gehört zur waagrechten und zur senkrechten Reihe: zweifarbig */
+    o+=wedge(-45,135,C('c3'))+wedge(135,315,C('c4'))+'<circle cx="0" cy="0" r="'+(r+4)+'" fill="none" stroke="'+C('ink')+'" stroke-width="2"/>';
+  }else if(mode==='four'){
+    /* Mittelpunkt gehört zu allen vier Armen: vierfarbig */
+    o+=wedge(-45,45,C('c1'))+wedge(45,135,C('c4'))+wedge(135,225,C('c2'))+wedge(225,315,C('c3'))+'<circle cx="0" cy="0" r="'+(r+4)+'" fill="none" stroke="'+C('ink')+'" stroke-width="2"/>';
+  }else o+=dot(0,0,c('mid'),8);
+  return {s:o,x:-n*d,y:-n*d,w:2*n*d,h:2*n*d};
+}
+function bub(x,y,t,kind){
+  return '<rect x="'+x+'" y="'+y+'" width="50" height="38" rx="10" fill="'+(kind===1?C('m1'):kind===2?C('m3'):C('paper'))+'" stroke="'+C('line')+'" stroke-width="1.5"/>'+
+    '<text class="fl" text-anchor="middle" x="'+(x+25)+'" y="'+(y+24)+'">'+t+'</text>';
+}
+function chainFig(x,rows,vals){
+  var bw=50,gap=52,rh=66,o='',maxw=0;
+  rows.forEach(function(ops,r){
+    var y=r*rh,v=x;
+    o+=bub(0,y,fmt(x),1);
+    ops.forEach(function(op,i){
+      var x0=bw+i*(bw+gap);
+      o+='<line x1="'+(x0+4)+'" y1="'+(y+19)+'" x2="'+(x0+gap-10)+'" y2="'+(y+19)+'" stroke="'+C('muted')+'" stroke-width="2"/>'+
+         '<path d="M'+(x0+gap-12)+' '+(y+13)+' l8 6 l-8 6z" fill="'+C('muted')+'"/>'+
+         '<rect x="'+(x0+4)+'" y="'+(y-13)+'" width="'+(gap-8)+'" height="23" rx="11.5" fill="'+C('m2')+'"/>'+
+         '<text class="fl" text-anchor="middle" x="'+(x0+gap/2)+'" y="'+(y+4)+'">'+op[0]+'</text>';
+      v=op[1](v,x);
+      o+=bub(x0+gap,y,vals?fmt(v):'?',i===ops.length-1?2:0);
+    });
+    maxw=Math.max(maxw,bw+ops.length*(bw+gap));
+  });
+  return {s:o,x:0,y:-14,w:maxw,h:rows.length*rh-12};
+}
+function figMachine(n,mode){
+  if(mode==='B')return chainFig(n,[[['+ 3',function(v){return v+3;}],['· 2',function(v){return v*2;}]]],false);
+  return chainFig(n,[[['?',function(v){return 3*v+2;}]]],true);
+}
+function figStories(x,mode){
+  var A=[['· 5',function(v){return v*5;}],['+ 3',function(v){return v+3;}]],B=[['+ 3',function(v){return v+3;}],['· 5',function(v){return v*5;}]];
+  if(mode==='A')return chainFig(x,[A],true);
+  if(mode==='B')return chainFig(x,[B],true);
+  if(mode==='AB')return chainFig(x,[A,B],false);
+  return chainFig(x,[[['?',function(v){return v;}]]],false);
+}
+function figTrick(x,mode){
+  return chainFig(x,[[['· 2',function(v){return v*2;}],['+ 6',function(v){return v+6;}],[': 2',function(v){return v/2;}],['− x',function(v,s){return v-s;}]]],mode==='T');
+}
+function fenceFig(n,mode){
+  var w=56,o='';
+  function col(g,i){
+    if(mode==='parts')return g==='post'?C('c1'):C('c2');
+    if(mode==='A')return (g==='post'&&i===0)?C('c1'):C('c2');
+    if(mode==='B')return ((g==='post'&&i<=1)||(g==='rail'&&i===0))?C('c1'):C('c2');
+    return g==='post'?C('ink'):C('wood');
+  }
+  for(var i=0;i<n;i++)for(var r=0;r<2;r++)o+='<rect x="'+(i*w+6)+'" y="'+(16+r*24)+'" width="'+(w-12)+'" height="7" rx="3" fill="'+col('rail',i)+'"/>';
+  for(var k=0;k<=n;k++)o+='<rect x="'+(k*w-5)+'" y="0" width="10" height="64" rx="4" fill="'+col('post',k)+'"/>';
+  return {s:o,x:-5,y:0,w:n*w+10,h:64};
+}
+function ruler(max,k,tick,lab){
+  var o='<line x1="24" y1="0" x2="24" y2="'+(-max*k)+'" stroke="'+C('muted')+'" stroke-width="1.5"/>';
+  for(var c=0;c<=max;c+=tick){
+    var y=-c*k,big=c%lab===0;
+    o+='<line x1="'+(big?13:18)+'" y1="'+y+'" x2="24" y2="'+y+'" stroke="'+C('muted')+'" stroke-width="1.5"/>';
+    if(big)o+='<text class="ft" text-anchor="end" x="9" y="'+(y+4)+'">'+c+'</text>';
+  }
+  return o+'<text class="ft" text-anchor="end" x="24" y="'+(-max*k-12)+'">cm</text>';
+}
+function candle(x){
+  var k=6.6,hc=Math.max(0,20-2*x),H=hc*k,o=ruler(20,k,1,5);
+  o+='<line x1="24" y1="0" x2="170" y2="0" stroke="'+C('ink')+'" stroke-width="2.5"/>';
+  if(hc>0){
+    o+='<line x1="24" y1="'+(-H)+'" x2="88" y2="'+(-H)+'" stroke="'+C('c2')+'" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    o+='<rect x="92" y="'+(-H)+'" width="36" height="'+H+'" rx="4" fill="'+C('wax')+'" stroke="'+C('wood')+'" stroke-width="2"/>';
+    o+='<line x1="110" y1="'+(-H)+'" x2="110" y2="'+(-H-8)+'" stroke="'+C('ink')+'" stroke-width="2"/>';
+    if(x>0)o+='<path d="M110 '+(-H-30)+' q9 13 0 22 q-9 -9 0 -22z" fill="'+C('c2')+'"/>';
+  }else o+='<ellipse cx="110" cy="-2" rx="24" ry="4" fill="'+C('wax')+'" stroke="'+C('wood')+'" stroke-width="2"/>';
+  return {s:o,x:-14,y:-20*k-40,w:190,h:20*k+48};
+}
+function pathFig(n,mode){
+  var c=30,o='';
+  for(var j=0;j<3;j++)for(var i=0;i<n+2;i++){
+    var dark=j===1&&i>=1&&i<=n,f,x=i*c+1.5,y=j*c+1.5,w=c-3;
+    if(dark&&mode==='C'){
+      /* gehört zum ganzen Rechteck (blau), wird aber wieder abgezogen (oranges Kreuz) */
+      o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" rx="4" fill="'+C('c1')+'" fill-opacity=".3"/>'+
+         '<path d="M'+(x+6)+' '+(y+6)+' l'+(w-12)+' '+(w-12)+' M'+(x+w-6)+' '+(y+6)+' l'+(-(w-12))+' '+(w-12)+'" stroke="'+C('c2')+'" stroke-width="3.5" stroke-linecap="round" fill="none"/>';
+      continue;
+    }
+    if(dark)f=C('pd');
+    else{
+      f=C('pl');
+      if(mode==='A')f=(i===0||i===n+1)?C('c2'):C('c1');
+      else if(mode==='B')f=j===1?C('c2'):C('c1');
+      else if(mode==='C')f=C('c1');
+      else if(mode==='D')f=(j===0||(j===1&&i===n+1))?C('c3'):C('c4');
+      else if(mode==='E')f=(i===0||i===n+1||i===1)?C('c1'):C('c2');
+    }
+    o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" rx="4" fill="'+f+'"'+(dark?' stroke="'+C('line')+'" stroke-width="1.5"':'')+'/>';
+  }
+  return {s:o,x:0,y:0,w:(n+2)*c,h:3*c};
+}
+function dotRect(n,mode){
+  var d=28,o='';
+  for(var j=0;j<n;j++)for(var i=0;i<n+2;i++){
+    var c=null;
+    if(mode==='sq')c=i<n?C('c1'):C('c2');
+    else if(mode==='rows')c=j%2?C('c4'):C('c3');
+    else if(mode==='top')c=j===0?C('c1'):C('c2');
+    o+=dot(i*d,j*d,c,8);
+  }
+  return {s:o,x:0,y:0,w:(n+1)*d,h:Math.max(1,(n-1)*d)};
+}
+function bars(x){
+  var k=1.25,o='',E=9*x,J=60+4*x;
+  o+='<text class="ft" x="0" y="-6">Einzelkarten</text><rect x="0" y="0" width="'+Math.max(1,E*k)+'" height="22" rx="3" fill="'+C('c3')+'"/>';
+  o+='<text class="ft" x="0" y="44">Jahreskarte</text><rect x="0" y="50" width="'+(60*k)+'" height="22" rx="3" fill="'+C('c1')+'"/>'+
+     '<rect x="'+(60*k)+'" y="50" width="'+(4*x*k)+'" height="22" fill="'+C('c2')+'"/>';
+  o+='<line x1="0" y1="88" x2="'+(180*k)+'" y2="88" stroke="'+C('muted')+'" stroke-width="1.5"/>';
+  for(var e=0;e<=180;e+=20){
+    o+='<line x1="'+(e*k)+'" y1="88" x2="'+(e*k)+'" y2="'+(e%60===0?97:93)+'" stroke="'+C('muted')+'" stroke-width="1.5"/>';
+    if(e%60===0)o+='<text class="ft" text-anchor="middle" x="'+(e*k)+'" y="110">'+e+' €</text>';
+  }
+  return {s:o,x:-12,y:-22,w:180*k+30,h:136};
+}
+function gridSticks(n,mode){
+  var s=40,o='';
+  function ln(x1,y1,x2,y2,c){o+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+c+'" stroke-width="5.5" stroke-linecap="round"/>';}
+  function col(hor,idx){
+    if(mode==='hv')return hor?C('c3'):C('c4');
+    if(mode==='outer')return (idx===0||idx===n)?C('c1'):C('c2');
+    if(mode==='tl')return idx<n?C('c1'):C('c2');
+    return C('wood');
+  }
+  for(var j=0;j<=n;j++)for(var i=0;i<n;i++)ln(i*s+7,j*s,i*s+s-7,j*s,col(true,j));
+  for(var i2=0;i2<=n;i2++)for(var j2=0;j2<n;j2++)ln(i2*s,j2*s+7,i2*s,j2*s+s-7,col(false,i2));
+  return {s:o,x:0,y:0,w:n*s,h:n*s};
+}
+function feet(n,mode){
+  var d=28,o='';
+  function col(j,foot){
+    if(mode==='A')return foot?C('c2'):C('c1');
+    if(mode==='R')return (foot||j===n-1)?C('c3'):C('c4');
+    return null;
+  }
+  for(var j=0;j<n;j++)for(var i=1;i<=n;i++)o+=dot(i*d,j*d,col(j,false),8);
+  o+=dot(0,(n-1)*d,col(n-1,true),8)+dot((n+1)*d,(n-1)*d,col(n-1,true),8);
+  return {s:o,x:0,y:0,w:(n+1)*d,h:Math.max(1,(n-1)*d)};
+}
+function stage(a){
+  var k=7,W=(24-2*a)*k,D=a*k,o='';
+  o+='<rect x="-100" y="-18" width="200" height="18" rx="3" fill="'+C('ink')+'"/><text class="ft" text-anchor="middle" x="0" y="-24">Bühne</text>';
+  o+='<rect x="'+(-W/2)+'" y="0" width="'+W+'" height="'+D+'" fill="'+C('m2')+'"/>';
+  o+='<path d="M'+(-W/2)+' 0 V'+D+' H'+(W/2)+' V0" fill="none" stroke="'+C('c2')+'" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>';
+  o+='<text class="fl" text-anchor="end" x="'+(-W/2-8)+'" y="'+(D/2+5)+'">a</text><text class="fl" x="'+(W/2+8)+'" y="'+(D/2+5)+'">a</text>';
+  o+='<text class="fl" text-anchor="middle" x="0" y="'+(D+20)+'">?</text>';
+  return {s:o,x:-110,y:-38,w:220,h:146};
+}
+function triTiling(n,mode){
+  var s=40,h=s*Math.sqrt(3)/2,o='';
+  function tri(p,f){o+='<polygon points="'+p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1);}).join(' ')+'" fill="'+f+'" stroke="'+C('paper')+'" stroke-width="2.5" stroke-linejoin="round"/>';}
+  for(var k=1;k<=n;k++){
+    var x0=-k*s/2,yt=(k-1)*h,yb=k*h,last=k===n;
+    for(var i=0;i<k;i++)tri([[x0+i*s+s/2,yt],[x0+i*s,yb],[x0+(i+1)*s,yb]],mode==='diff'?(last?C('c2'):C('c1')):last&&mode==='last'?C('c2'):last&&mode==='ud'?C('c3'):C('tile'));
+    for(var j=0;j<k-1;j++)tri([[x0+j*s+s/2,yt],[x0+(j+1)*s+s/2,yt],[x0+(j+1)*s,yb]],mode==='diff'?(last?C('c2'):C('c1')):last&&mode==='last'?C('c2'):last&&mode==='ud'?C('c4'):C('m1'));
+  }
+  return {s:o,x:-n*s/2,y:0,w:n*s,h:n*h};
+}
+
+/* ================= Missionen ================= */
+var V='<i>n</i>',X='<i>x</i>',AA='<i>a</i>';
+function k1(t){return '<b class="k1">'+t+'</b>';}function k2(t){return '<b class="k2">'+t+'</b>';}
+function k3(t){return '<b class="k3">'+t+'</b>';}function k4(t){return '<b class="k4">'+t+'</b>';}
+
+var LEVELS=[
+  {n:1,t:'Entdecken',d:'Aus Bildern, Tabellen und Situationen einen Term gewinnen.'},
+  {n:2,t:'Deuten',d:'Terme lesen, vergleichen und eigene Bilder dazu entwickeln.'},
+  {n:3,t:'Knobeln',d:'Produkte, Klammern und Quadrate in kniffligen Zusammenhängen.'}
+];
+
+var M=[
+/* ====================== Level 1 ====================== */
+{id:'tab',lvl:1,title:'Tische und Stühle',kind:'Bild → Term',v:'n',fig:tables,min:1,max:6,anchor:'left',
+ intro:'Für ein Klassenfest werden '+V+' Tische zu einer langen Tafel zusammengeschoben. An jeden freien Platz kommt ein Stuhl.',
+ unit:function(n){return pl(n,'Tisch','Tische');},
+ learn:'Ein Term hat oft einen Teil, der mit '+V+' wächst, und einen festen Teil. Verschiedene Zähl-Ideen führen zu verschiedenen, aber gleichwertigen Termen.',
+ steps:[
+  {t:'nums',q:'Bewege den Regler und zähle die Stühle. Für '+V+' = 8 reicht der Regler nicht – überlege!',
+   fields:[['n = 1',4],['n = 2',6,null,{'8':'8 Stühle wären es bei zwei einzelnen Tischen. Zusammengeschoben fallen die beiden Plätze in der Mitte weg.'}],
+     ['n = 3',8,null,{'12':'12 Stühle wären es bei drei einzelnen Tischen. In der Tafel fallen die Plätze zwischen den Tischen weg.'}],
+     ['n = 8',18,null,{'16':'16 sind nur die Stühle an den langen Seiten. An den beiden Enden sitzt auch noch jemand.','32':'32 Stühle wären es bei acht einzelnen Tischen. In der Tafel fallen die Plätze zwischen den Tischen weg.','20':'Prüfe den Zuwachs: Von Tisch zu Tisch kommen 2 Stühle dazu, nicht mehr.'}]],
+   hints:['Zähle für '+V+' = 1, 2 und 3. Welche Stühle sind immer da, welche kommen mit jedem Tisch dazu?','An den beiden Enden steht immer je 1 Stuhl. Jeder Tisch hat 2 Stühle an den langen Seiten. Für 8 Tische also 2·8 und dazu 2.'],
+   why:'4, 6, 8, …: Mit jedem Tisch kommen 2 Stühle dazu. Für 8 Tische sind es 2·8 = 16 an den langen Seiten und 2 an den Enden, also 18.'},
+  {t:'term',q:'Stelle einen Term auf, der für '+V+' Tische die Anzahl der Stühle angibt.',target:function(n){return 2*n+2;},inc:2,
+   forms:[['2*n+2','2 Stühle für jeden Tisch (lange Seiten), dazu die 2 Stühle an den Enden.','A'],
+     ['2*(n+1)','Zwei gleich große Gruppen: obere Reihe mit einem Endstuhl und untere Reihe mit dem anderen Endstuhl, je n + 1 Stühle.','B'],
+     ['4+2*(n-1)','4 Stühle für den ersten Tisch samt beiden Enden, dann 2 für jeden der n − 1 weiteren Tische.','C'],
+     ['n+n+2','Obere Reihe n, untere Reihe n, dazu die 2 Endstühle.','T',1]],
+   traps:[[function(n){return 4*n;},'4·n würde stimmen, wenn jeder Tisch einzeln stünde. In der Tafel fallen die Plätze zwischen den Tischen weg.'],
+     [function(n){return 2*n;},'2·n zählt nur die Stühle an den langen Seiten. Die beiden Endstühle fehlen.']],
+   hints:[{h:'Schau auf die Färbung: Die 2 Stühle an den Enden (blau) sind immer da. Jeder Tisch bringt 2 Stühle mit (orange).',mode:'A'},
+     V+' Tische bringen '+V+'-mal 2 Stühle, also 2·'+V+'. Dazu kommen die 2 Stühle an den Enden.',
+     'Eine Lösung ist T('+V+') = 2·'+V+' + 2: Der Teil 2·'+V+' wächst mit der Zahl der Tische, die 2 bleibt immer gleich.'],
+   why:'Bewege den Regler: Dein Term rechnet mit.'},
+  {t:'pick',q:'Lea rechnet anders: 2·('+V+' + 1). Welches Bild zeigt Leas Idee?',pn:4,opts:[
+    ['B',1],['A',0,'Diese Färbung passt zu 2·n + 2: Die langen Seiten und die Enden sind getrennt gefärbt.'],
+    ['C',0,'Diese Färbung passt zu 4 + 2·(n − 1): 4 Stühle am Anfang, dann 2 für jeden weiteren Tisch.']],
+   hints:['2·(…) bedeutet: Es gibt zwei gleich große Gruppen.','Jede Gruppe hat '+V+' + 1 Stühle, also einen mehr als Tische. Suche das Bild mit zwei Farben, die gleich oft vorkommen.'],
+   okMode:'B',why:'Obere Reihe plus ein Endstuhl: '+k3(V+' + 1')+' Stühle. Untere Reihe plus der andere Endstuhl: wieder '+k4(V+' + 1')+'. Zusammen 2·('+V+' + 1).',
+   alt:{form:1,q:'Lea rechnet anders als du: 4 + 2·('+V+' − 1). Welches Bild zeigt Leas Idee?',opts:[
+    ['C',1],['A',0,'Diese Färbung passt zu 2·n + 2: Die langen Seiten und die Enden sind getrennt gefärbt.'],
+    ['B',0,'Das ist deine eigene Idee: zwei Gruppen mit je n + 1 Stühlen.']],
+    hints:['Der Term beginnt mit 4: Welche 4 Stühle sind schon bei einem einzigen Tisch da?','Für jeden der '+V+' − 1 weiteren Tische kommen 2 Stühle dazu. Suche das Bild, in dem genau 4 Stühle blau sind.'],
+    okMode:'C',why:k1('4')+' Stühle gehören zum ersten Tisch und den beiden Enden. Jeder der '+V+' − 1 weiteren Tische bringt '+k2('2')+' Stühle mit.'}},
+  {t:'nums',q:'Rückwärts gedacht: Zum Fest kommen 30 Personen. Wie viele Tische braucht man?',
+   fields:[['Tische',14,null,{'15':'30 : 2 = 15 wäre richtig, wenn an den Enden niemand säße. Ziehe zuerst die 2 Endplätze ab.','28':'28 ist die Zahl der Plätze an den langen Seiten. Gefragt ist die Zahl der Tische.','16':'Probe: 2·16 + 2 = 34. Das sind zu viele Plätze.'}]],
+   hints:['Zwei Personen sitzen an den Enden. Wie viele bleiben für die langen Seiten?','28 Personen sitzen an den langen Seiten, 2 pro Tisch: 28 : 2 = 14.'],
+   why:'30 − 2 = 28 und 28 : 2 = 14. Probe mit dem Term: 2·14 + 2 = 30.'}
+ ]},
+{id:'machine',lvl:1,title:'Zahlen­maschine',kind:'Tabelle → Term',v:'n',fig:figMachine,low:true,min:1,max:6,
+ intro:'Die Zahlenmaschine verwandelt jede Eingabe '+V+' nach einer festen Regel in eine Ausgabe. Finde die Regel!',
+ unit:function(n){return 'Eingabe '+n;},
+ learn:'Auch aus einer Wertetabelle lässt sich ein Term gewinnen: Der Zuwachs pro Schritt wird zur Zahl vor '+V+', der Rest zur festen Zahl.',
+ steps:[
+  {t:'choice',q:'Probiere mit dem Regler mehrere Eingaben aus. Was passiert mit der Ausgabe, wenn die Eingabe um 1 größer wird?',opts:[
+    ['Sie wird um 3 größer.',1],
+    ['Sie wird um 2 größer.',0,'Vergleiche genau: Zur Eingabe 1 gehört 5, zur Eingabe 2 gehört 8. Der Unterschied ist 3.'],
+    ['Sie verdoppelt sich.',0,'5 → 8 → 11 ist keine Verdopplung.']],
+   hints:['Stelle nacheinander 1, 2, 3 ein und notiere die Ausgaben.','Die Ausgaben sind 5, 8, 11, 14. Bilde die Unterschiede.'],
+   why:'Die Ausgaben 5, 8, 11, 14 wachsen immer um 3. Im Term steht deshalb 3·'+V+'.'},
+  {t:'term',name:'A',q:'Stelle einen Term auf, der zu jeder Eingabe '+V+' die Ausgabe der Maschine angibt.',target:function(n){return 3*n+2;},inc:3,
+   forms:[['3*n+2','Die Eingabe wird verdreifacht, dann wird 2 addiert.'],
+     ['5+3*(n-1)','Start bei der ersten Ausgabe 5, dann 3 für jeden der n − 1 weiteren Schritte.'],
+     ['3*(n+1)-1','Die Eingabe wird um 1 erhöht, verdreifacht und um 1 vermindert.']],
+   traps:[[function(n){return 3*n;},'3·n trifft das Wachstum. Vergleiche aber: Bei Eingabe 1 liefert die Maschine 5, nicht 3.'],
+     [function(n){return 5*n;},'5·n passt nur für die Eingabe 1. Bei Eingabe 2 liefert die Maschine 8, nicht 10.'],
+     [function(n){return 2*n+3;},'Hier sind die beiden Zahlen vertauscht: Der Zuwachs pro Schritt ist 3, er gehört vor das n.']],
+   hints:['Die Ausgabe wächst pro Schritt um 3. Vergleiche 3·'+V+' mit der echten Ausgabe.','3·1 = 3, die Maschine liefert 5. 3·2 = 6, die Maschine liefert 8. Was fehlt jedes Mal?',
+     'Eine Lösung ist A('+V+') = 3·'+V+' + 2: Die Eingabe wird verdreifacht, dann kommt immer 2 dazu.'],
+   why:'Probe mit der Tabelle: 3·1 + 2 = 5, 3·2 + 2 = 8, 3·3 + 2 = 11.'},
+  {t:'choice',mode:'B',q:'Eine zweite Maschine rechnet nach dem Term 2·('+V+' + 3). Welche Ausgaben liefert sie für die Eingaben 1, 2 und 3?',opts:[
+    ['8, 10 und 12',1],
+    ['5, 7 und 9',0,'Das sind die Ausgaben von 2·n + 3. Die Klammer sagt aber: erst 3 addieren, dann verdoppeln.'],
+    ['6, 12 und 18',0,'Das sind die Ausgaben von 2·n·3. In der Klammer steht ein Plus, kein Mal.']],
+   hints:['Die Rechenkette zeigt die Reihenfolge: erst + 3, dann · 2.','Für die Eingabe 1: 1 + 3 = 4, dann 4·2 = 8.'],
+   why:'Klammer zuerst: 1 + 3 = 4, verdoppelt 8. Für 2 und 3 entsprechend 10 und 12. Der Term ist ein Produkt aus 2 und der Summe '+V+' + 3.'},
+  {t:'nums',q:'Zurück zur ersten Maschine. Sie verarbeitet auch große und negative Zahlen. Berechne die Ausgaben mit deinem Term.',
+   fields:[['n = 20',62,null,{'60':'60 ist nur 3·20. Die Maschine addiert danach noch 2.','66':'Du hast erst 20 + 2 gerechnet. Es gilt Punkt vor Strich: erst 3·20, dann + 2.'}],
+     ['n = −2',-4,null,{'4':'Achte auf das Vorzeichen: 3·(−2) = −6 und −6 + 2 = −4.','8':'3·(−2) ist −6, nicht 6.','−8':'Die Maschine addiert 2: −6 + 2 = −4, nicht −6 − 2.'}]],
+   hints:['Setze die Zahl für '+V+' ein. Bei negativen Zahlen hilft eine Klammer: 3·(−2) + 2.','3·20 + 2 = 62 und 3·(−2) + 2 = −6 + 2.'],
+   why:'3·20 + 2 = 62 und 3·(−2) + 2 = −4. Mit dem Term brauchst du die Maschine nicht mehr.'}
+ ]},
+{id:'plus',lvl:1,title:'Kreuz­muster',kind:'Term deuten',v:'n',fig:plus,min:1,max:5,start:2,
+ intro:'Ein Punktmuster wächst in vier Richtungen. '+V+' ist die Anzahl der Punkte in einem Arm. Zum Muster gehört der Term <b>T('+V+') = 4·'+V+' + 1</b>.',
+ unit:function(n){return 'Armlänge '+n;},
+ learn:'Einen Term deuten heißt: zu jeder Zahl und jedem Rechenzeichen sagen können, was es im Bild bedeutet.',
+ steps:[
+  {t:'choice',q:'Hier ist der Term schon bekannt. Was bedeutet die 1 im Term 4·'+V+' + 1?',opts:[
+    ['Den Punkt in der Mitte, der in jeder Figur vorkommt.',1],
+    ['Die erste Figur des Musters.',0,'Die Nummer der Figur ist n. Die 1 zählt etwas, das in jeder Figur gleich bleibt.'],
+    ['Dass jeder Arm um 1 Punkt wächst.',0,'Das Wachstum steckt in der 4: Vier Arme wachsen um je einen Punkt, zusammen um 4 Punkte.']],
+   hints:['Bewege den Regler. Welcher Punkt ist bei jeder Armlänge da?'],
+   okMode:'A',why:'Der Term ist eine Summe: '+k2('4·'+V)+' zählt die Punkte der vier Arme, '+k1('1')+' den Mittelpunkt.'},
+  {t:'nums',q:'Berechne mit dem Term. Der Regler reicht nur bis 5.',
+   fields:[['T(3)',13,null,{'12':'Der Mittelpunkt fehlt noch.','16':'Du hast erst 3 + 1 gerechnet. Es gilt Punkt vor Strich: erst 4·3, dann + 1.'}],
+     ['T(10)',41,null,{'40':'Der Mittelpunkt fehlt noch.','44':'Du hast erst 10 + 1 gerechnet. Es gilt Punkt vor Strich: erst 4·10, dann + 1.'}],
+     ['T(25)',101,null,{'100':'Der Mittelpunkt fehlt noch.','104':'Du hast erst 25 + 1 gerechnet. Es gilt Punkt vor Strich.'}]],
+   hints:['Setze die Zahl für '+V+' ein: T(3) = 4·3 + 1.','T(10) = 4·10 + 1 = 41 und T(25) = 4·25 + 1.'],
+   why:'T(3) = 13, T(10) = 41, T(25) = 101. Für große Figuren ist Rechnen schneller als Zählen.'},
+  {t:'pick',q:'Welches Bild passt genau zum Term (2·'+V+' + 1) + 2·'+V+'?',pn:3,opts:[
+    ['B',1],['A',0,'Diese Färbung passt zu 1 + 4·n: Mittelpunkt und vier Arme.'],
+    ['C',0,'Hier ist der Mittelpunkt zweifarbig, weil er zur waagrechten und zur senkrechten Reihe gezählt wird. Das passt zu 2·(2·n + 1) − 1.']],
+   hints:['Der Term hat zwei Teile. Suche im Bild eine Gruppe mit 2·'+V+' + 1 Punkten.','Die waagrechte Reihe hat links '+V+', rechts '+V+' und in der Mitte 1 Punkt. Der Rest sind 2·'+V+' Punkte.'],
+   okMode:'B',why:'Die waagrechte Reihe hat '+k3('2·'+V+' + 1')+' Punkte. Darüber und darunter bleiben '+k4('2·'+V)+' Punkte.'},
+  {t:'choice',mode:'four',q:'Kim rechnet 4·('+V+' + 1) − 3. Das Bild zeigt Kims Idee: Jeder Arm hat eine Farbe, der Mittelpunkt alle vier. Warum zieht Kim 3 ab?',opts:[
+    ['Kim zählt jeden Arm mit dem Mittelpunkt. So wird der Mittelpunkt viermal gezählt, also dreimal zu oft.',1],
+    ['Weil drei Arme kürzer sind als der vierte.',0,'Alle vier Arme sind gleich lang – prüfe es mit dem Regler.'],
+    ['Weil der Mittelpunkt nicht zum Muster gehört.',0,'Der Mittelpunkt gehört dazu. Er wurde nur zu oft gezählt.']],
+   hints:['Ein Arm zusammen mit dem Mittelpunkt hat '+V+' + 1 Punkte. Wie oft kommt der Mittelpunkt in 4·('+V+' + 1) vor?'],
+   why:'4·('+V+' + 1) zählt den Mittelpunkt viermal, deshalb wird 3 abgezogen. Die drei Terme 4·'+V+' + 1, (2·'+V+' + 1) + 2·'+V+' und 4·('+V+' + 1) − 3 liefern für jedes '+V+' denselben Wert.'}
+ ]},
+{id:'zaun',lvl:1,title:'Garten­zaun',kind:'Term aus Teilen',v:'n',fig:fenceFig,min:1,max:6,start:4,anchor:'left',
+ intro:'Ein Zaun wird aus Pfosten und Latten gebaut. Zwischen zwei Pfosten liegt ein Zaunfeld mit 2 Latten. '+V+' ist die Anzahl der Zaunfelder.',
+ unit:function(n){return pl(n,'Zaunfeld','Zaunfelder');},
+ learn:'Schwierige Terme lassen sich aus einfachen Teiltermen zusammensetzen: erst die Pfosten, dann die Latten, dann die Summe.',
+ steps:[
+  {t:'nums',q:'Zähle für '+V+' = 4 Zaunfelder.',
+   fields:[['Pfosten',5,null,{'4':'Zähle noch einmal: Auch am Ende des Zauns steht ein Pfosten.','8':'8 ist die Zahl der Latten. Pfosten sind die senkrechten Teile.'}],
+     ['Latten',8,null,{'4':'Jedes Zaunfeld hat 2 Latten.','5':'5 ist die Zahl der Pfosten. Latten sind die waagrechten Teile.'}]],
+   hints:['Stelle den Regler auf 4. Pfosten stehen senkrecht, Latten liegen waagrecht.','Bei 4 Feldern: an jeder Feldgrenze ein Pfosten, also 5. Pro Feld 2 Latten, also 8.'],
+   why:'Bei 4 Feldern stehen 5 Pfosten, denn am Ende schließt ein Pfosten ab. Dazu kommen 2·4 = 8 Latten.'},
+  {t:'term',name:'P',q:'Stelle einen Term für die Anzahl der Pfosten bei '+V+' Zaunfeldern auf.',target:function(n){return n+1;},
+   forms:[['n+1','Ein Pfosten pro Zaunfeld und ein Abschlusspfosten.'],['2+(n-1)','2 Pfosten für das erste Feld, dann einer für jedes der n − 1 weiteren Felder.']],
+   traps:[[function(n){return n;},'Bei n Feldern stehen nicht n Pfosten: Am Ende schließt ein zusätzlicher Pfosten den Zaun ab.'],
+     [function(n){return 2*n;},'2 Pfosten pro Feld wären es nur bei einzeln stehenden Feldern. Benachbarte Felder teilen sich einen Pfosten.'],
+     [function(n){return 2*n+1;},'Du hast vermutlich die Latten mitgezählt. Gefragt sind hier nur die Pfosten.']],
+   hints:['Vergleiche für mehrere '+V+' die Zahl der Felder mit der Zahl der Pfosten.','Es ist immer ein Pfosten mehr als Felder. Eine Lösung ist P('+V+') = '+V+' + 1: ein Pfosten je Feld und der Abschlusspfosten.'],
+   okMode:'parts',why:'Im Bild sind jetzt Pfosten und Latten getrennt gefärbt.'},
+  {t:'choice',mode:'parts',q:'Der Zaun wird um ein Feld verlängert. Wie viele Teile kommen dazu?',opts:[
+    ['3 Teile: 1 Pfosten und 2 Latten.',1],
+    ['4 Teile: 2 Pfosten und 2 Latten.',0,'Der linke Pfosten des neuen Feldes steht schon – er gehört auch zum Nachbarfeld.'],
+    ['2 Teile: nur die beiden Latten.',0,'Am Ende des neuen Feldes muss auch ein Pfosten stehen.']],
+   hints:['Bewege den Regler um einen Schritt und beobachte, was neu ist.'],
+   why:'Jedes weitere Feld braucht 1 Pfosten und 2 Latten. Der Zuwachs ist also 3.'},
+  {t:'term',q:'Stelle einen Term für die Anzahl aller Teile (Pfosten und Latten) auf.',target:function(n){return 3*n+1;},inc:3,
+   forms:[['3*n+1','1 Pfosten am Anfang, dann 3 Teile (1 Pfosten, 2 Latten) für jedes Feld.','A'],
+     ['(n+1)+2*n','n + 1 Pfosten und 2·n Latten, als Summe der beiden Teilterme.','parts'],
+     ['4+3*(n-1)','4 Teile für das erste Feld, dann 3 für jedes der n − 1 weiteren Felder.','B']],
+   traps:[[function(n){return 4*n;},'4·n zählt für jedes Feld 2 Pfosten. Benachbarte Felder teilen sich aber einen Pfosten.'],
+     [function(n){return 3*n;},'3·n zählt die 3 Teile je Feld. Der Pfosten ganz am Anfang fehlt noch.'],
+     [function(n){return 2*n;},'2·n sind nur die Latten. Die Pfosten fehlen.'],
+     [function(n){return n+1;},'n + 1 sind nur die Pfosten. Die Latten fehlen.']],
+   hints:['Du kennst schon die Pfosten: '+V+' + 1. Wie viele Latten gibt es bei '+V+' Feldern?','Es gibt 2·'+V+' Latten. Addiere beide Teilterme.',
+     'Eine Lösung ist T('+V+') = ('+V+' + 1) + 2·'+V+': Pfosten plus Latten. Zusammengefasst ist das 3·'+V+' + 1.'],
+   why:'Bewege den Regler: Dein Term rechnet mit.'},
+  {t:'nums',q:'Der Zaun um den Schulgarten hat 40 Felder. Wie viele Teile werden gebraucht?',
+   fields:[['n = 40',121,null,{'120':'120 sind 3 Teile je Feld. Der allererste Pfosten fehlt noch.','160':'160 wären 4 Teile je Feld. Benachbarte Felder teilen sich aber einen Pfosten.','81':'Rechne getrennt: 41 Pfosten und 80 Latten.'}]],
+   hints:['Setze 40 in deinen Term ein.','41 Pfosten und 80 Latten.'],
+   why:'41 Pfosten und 80 Latten sind 121 Teile. Auch 3·40 + 1 = 121.'}
+ ]},
+{id:'candle',lvl:1,title:'Kerze',kind:'Sachaufgabe',v:'x',fig:candle,min:0,max:10,step:0.5,start:0,
+ intro:'Eine Kerze ist 20 cm hoch. Wenn sie brennt, wird sie jede Stunde 2 cm kürzer. '+X+' ist die Brenndauer in Stunden.',
+ unit:function(x){return 'nach '+fmt(x)+' h';},
+ learn:'Ein Term beschreibt eine Situation nur für sinnvolle Einsetzungen. Aus den Zahlen im Term liest du Startwert und Änderung pro Schritt ab.',
+ steps:[
+  {t:'nums',q:'Wie hoch ist die Kerze?',
+   fields:[['nach 1 Stunde',18,'cm',{'19':'Pro Stunde brennen 2 cm ab, nicht 1 cm.'}],
+     ['nach 3 Stunden',14,'cm',{'17':'Du hast 3 cm abgezogen. In 3 Stunden brennen aber 3·2 cm = 6 cm ab.','6':'6 cm ist das Stück, das abgebrannt ist. Gefragt ist die Höhe, die übrig bleibt.'}],
+     ['nach 4,5 Stunden',11,'cm',{'9':'9 cm ist das Stück, das abgebrannt ist. Gefragt ist die Höhe, die übrig bleibt.','15,5':'Du hast 4,5 cm abgezogen. In 4,5 Stunden brennen aber 4,5·2 cm = 9 cm ab.'}]],
+   hints:['Du kannst den Regler bewegen und die Höhe an der Skala ablesen.','In 3 Stunden brennen 3·2 cm = 6 cm ab. Übrig bleiben 20 cm − 6 cm.'],
+   why:'Von den 20 cm wird für jede Stunde 2 cm abgezogen: 18 cm, 14 cm und 11 cm.'},
+  {t:'term',name:'K',q:'Stelle einen Term auf, der die Höhe der Kerze (in cm) nach '+X+' Stunden angibt.',target:function(x){return 20-2*x;},
+   test:[0,1,2,3,4,6,8],show:[0,1,3,4.5],
+   forms:[['20-2*x','Von der Starthöhe 20 cm wird das abgebrannte Stück 2·x abgezogen.'],
+     ['2*(10-x)','Die Kerze brennt insgesamt 10 Stunden. Nach x Stunden bleiben 10 − x Stunden übrig, und zu jeder gehören 2 cm.']],
+   traps:[[function(x){return 20+2*x;},'Mit einem Plus würde die Kerze wachsen.'],
+     [function(x){return 18*x;},'20 − 2 darfst du nicht zusammenfassen: Nur die 2 cm gehören zu jeder Stunde, die 20 cm gibt es nur einmal.'],
+     [function(x){return 2*x;},'2·x ist das Stück, das abgebrannt ist. Gesucht ist die Höhe, die übrig bleibt.'],
+     [function(x){return 20-x;},'Pro Stunde brennen 2 cm ab, nicht 1 cm.'],
+     [function(x){return 2*x-20;},'Minuend und Subtrahend sind vertauscht: Von der Starthöhe wird etwas abgezogen, nicht umgekehrt.']],
+   hints:['Die Kerze wird kürzer. Welches Rechenzeichen passt dazu?','In '+X+' Stunden brennen '+X+'-mal 2 cm ab, also 2·'+X+'.',
+     'Eine Lösung ist K('+X+') = 20 − 2·'+X+': Starthöhe minus abgebranntes Stück. Der Term ist eine Differenz, der Subtrahend ist das Produkt 2·'+X+'.'],
+   why:'Bewege den Regler: Dein Term rechnet mit.'},
+  {t:'choice',q:'Für welche Werte von '+X+' ist der Term in dieser Situation sinnvoll?',opts:[
+    ['Für alle Zahlen von 0 bis 10, auch für Kommazahlen wie 2,5.',1],
+    ['Für alle Zahlen.',0,'Setze x = 12 ein: Der Term liefert −4. Eine Kerze kann nicht −4 cm hoch sein.'],
+    ['Nur für natürliche Zahlen.',0,'Die Kerze brennt auch nach 2,5 Stunden. Der Term liefert dann 15 cm – das passt.']],
+   hints:['Was liefert der Term für '+X+' = 12? Und was bedeutet '+X+' = 2,5?'],
+   why:'Nach 10 Stunden ist die Kerze abgebrannt, denn K(10) = 0. Für größere '+X+' liefert der Term negative Werte, die es hier nicht gibt.'},
+  {t:'choice',q:'Eine zweite Kerze wird durch den Term 15 − 3·'+X+' beschrieben. Was weißt du über sie?',opts:[
+    ['Sie ist 15 cm hoch und wird jede Stunde 3 cm kürzer.',1],
+    ['Sie ist 15 cm hoch und brennt 3 Stunden.',0,'Die 3 steht vor x: Sie ist die Abnahme pro Stunde, nicht die Brenndauer. Die Brenndauer wäre 15 : 3 = 5 Stunden.'],
+    ['Sie ist 3 cm hoch und brennt 15 Stunden.',0,'Die Zahl ohne x ist die Starthöhe. Setze x = 0 ein: 15 − 0 = 15.']],
+   hints:['Setze '+X+' = 0 ein. Wie hoch ist die Kerze am Anfang?','Setze dann '+X+' = 1 ein. Um wie viel ist sie kürzer geworden?'],
+   why:'Die Zahl ohne '+X+' ist die Starthöhe, die Zahl vor '+X+' die Abnahme pro Stunde. Diese Kerze ist kürzer und brennt schneller ab: Nach 5 Stunden ist sie aus.'}
+ ]},
+/* ====================== Level 2 ====================== */
+{id:'path',lvl:2,title:'Gartenweg',kind:'Aufstellen und deuten',v:'n',fig:pathFig,min:1,max:6,start:2,anchor:'left',
+ intro:'Ein Gartenweg besteht aus einer Reihe dunkler Platten. Ringsum wird er mit hellen Platten eingefasst. '+V+' ist die Anzahl der dunklen Platten.',
+ unit:function(n){return pl(n,'dunkle Platte','dunkle Platten');},
+ learn:'Zu einem Bild gibt es viele richtige Terme. Jeder steht für eine eigene Zähl-Idee, und alle liefern für jedes '+V+' denselben Wert.',
+ steps:[
+  {t:'term',q:'Untersuche mehrere Figuren mit dem Regler. Stelle dann einen Term für die Anzahl der hellen Platten auf.',target:function(n){return 2*n+6;},inc:2,
+   forms:[['2*n+6','Über und unter dem Weg liegen je n Platten, links und rechts je eine Dreierspalte.','A'],
+     ['2*(n+2)+2','Obere und untere Reihe haben je n + 2 Platten. Dazu kommen die 2 Platten links und rechts neben dem Weg.','B'],
+     ['3*(n+2)-n','Das ganze Rechteck hat 3 Reihen mit je n + 2 Platten. Davon werden die n dunklen Platten abgezogen.','C'],
+     ['2*(n+3)','Zwei gleiche Winkel mit je n + 3 Platten: obere Reihe mit einer Seitenplatte und untere Reihe mit der anderen.','D'],
+     ['8+2*(n-1)','8 helle Platten wie bei einer einzigen dunklen Platte, dann 2 für jede der n − 1 weiteren.','E'],
+     ['n+n+6','Oben n, unten n, dazu die beiden Dreierspalten.','A',1]],
+   traps:[[function(n){return 2*n+2;},'Links und rechts liegt jeweils eine ganze Dreierspalte, nicht nur eine Platte.'],
+     [function(n){return 3*(n+2);},'Das sind alle Platten des Rechtecks, auch die dunklen. Gefragt sind nur die hellen.'],
+     [function(n){return 2*n;},'Das sind nur die Platten direkt über und unter dem Weg. Die Platten an den Enden fehlen.'],
+     [function(n){return 2*n+4;},'Das sind die obere und die untere Reihe. Die beiden Platten links und rechts neben dem Weg fehlen noch.']],
+   hints:['Zähle zuerst für '+V+' = 1, 2 und 3: Es sind 8, 10 und 12 helle Platten. Wie viele kommen pro dunkler Platte dazu?',
+     {h:'Eine mögliche Zähl-Idee zeigt die Färbung: blau über und unter dem Weg, orange an den beiden Enden.',mode:'A'},
+     'Eine Lösung ist T('+V+') = 2·'+V+' + 6: je '+V+' Platten oben und unten, dazu zwei Dreierspalten mit zusammen 6 Platten.'],
+   why:''},
+  {t:'pick',q:'Jana rechnet 3·('+V+' + 2) − '+V+'. Welche Färbung zeigt Janas Idee?',pn:4,opts:[
+    ['C',1],['A',0,'Diese Färbung passt zu 2·n + 6: oben und unten je n, dazu zwei Dreierspalten.'],
+    ['B',0,'Diese Färbung passt zu 2·(n + 2) + 2: zwei ganze Reihen und die 2 Platten neben dem Weg.']],
+   hints:['Ein Minus im Term heißt: Etwas wird weggenommen.','3·('+V+' + 2) ist das ganze Rechteck aus 3 Reihen. Welche Platten werden davon abgezogen?'],
+   okMode:'C',why:'Jana zählt erst alle '+k1('3·('+V+' + 2)')+' Felder des Rechtecks (blau, auch unter den Kreuzen) und nimmt dann die '+k2(V)+' dunklen Platten mit dem orangen Kreuz wieder weg.',
+   alt:{form:2,q:'Jana rechnet anders als du: 2·('+V+' + 2) + 2. Welche Färbung zeigt Janas Idee?',opts:[
+    ['B',1],['A',0,'Diese Färbung passt zu 2·n + 6: oben und unten je n, dazu zwei Dreierspalten.'],
+    ['C',0,'Das ist deine eigene Idee: ganzes Rechteck (blau) minus dunkle Platten (oranges Kreuz).']],
+    hints:['2·('+V+' + 2) sind zwei gleich große Gruppen mit je '+V+' + 2 Platten.','Die obere und die untere Reihe sind je '+V+' + 2 Platten lang. Was bleibt dann noch übrig?'],
+    okMode:'B',why:'Obere und untere Reihe haben je '+k1(V+' + 2')+' Platten. Übrig bleiben die '+k2('2')+' Platten links und rechts neben dem Weg.'}},
+  {t:'choice',q:'Emre setzt '+V+' = 4 in 2·'+V+' + 6 und in 3·('+V+' + 2) − '+V+' ein und erhält beide Male 14. Ist damit bewiesen, dass die Terme gleichwertig sind?',opts:[
+    ['Nein, ein Beispiel reicht nicht. Aber beide Terme zählen dieselben Platten, nur anders sortiert – deshalb stimmen sie für jedes n überein.',1],
+    ['Ja, ein passendes Beispiel genügt als Beweis.',0,'Zwei verschiedene Terme können an einer Stelle zufällig übereinstimmen: 2·n und n + 4 liefern für n = 4 beide 8, für n = 5 aber nicht.'],
+    ['Nein, die Terme sind gar nicht gleichwertig.',0,'Prüfe weitere Werte, etwa n = 1 und n = 7: Beide Terme liefern 8 und 20.']],
+   hints:['Überlege: Können zwei verschiedene Terme für eine einzelne Zahl zufällig denselben Wert haben?'],
+   why:'Ein Beispiel kann Gleichwertigkeit nur widerlegen, nie beweisen. Hier überzeugt das Bild: Beide Terme zählen dieselben Platten. Später kannst du das auch durch Umformen zeigen.'},
+  {t:'nums',q:'Ein Weg hat 25 dunkle Platten. Berechne.',
+   fields:[['helle Platten',56,null,{'50':'50 sind nur die Platten über und unter dem Weg. Die beiden Dreierspalten fehlen.','81':'81 sind alle Platten zusammen. Gefragt sind hier die hellen.'}],
+     ['alle Platten zusammen',81,null,{'56':'56 sind nur die hellen Platten. Die 25 dunklen kommen dazu.','75':'Das Rechteck ist 27 Platten lang, nicht 25: Links und rechts steht je eine Spalte über.'}]],
+   hints:['Setze 25 in deinen Term ein. Für alle Platten: helle plus dunkle.','2·25 + 6 = 56 helle Platten. Dazu 25 dunkle.'],
+   why:'2·25 + 6 = 56 helle Platten, mit den 25 dunklen sind es 81. Probe: Das Rechteck hat 3·27 = 81 Felder.'}
+ ]},
+{id:'climb',lvl:2,title:'Kletter­halle',kind:'Sachaufgabe',v:'x',fig:bars,min:0,max:20,start:3,
+ intro:'In der Kletterhalle kostet eine Einzelkarte 9 €. Wer eine Jahreskarte für 60 € kauft, zahlt pro Besuch nur noch 4 €. '+X+' ist die Anzahl der Besuche in einem Jahr.',
+ unit:function(x){return pl(x,'Besuch','Besuche');},
+ learn:'Mit zwei Termen lassen sich Angebote vergleichen: Setze ein und beobachte, ab wann sich welcher Tarif lohnt.',
+ steps:[
+  {t:'nums',q:'Was kosten 3 Besuche?',
+   fields:[['mit Einzelkarten',27,'€',{'12':'4 € pro Besuch gelten nur mit Jahreskarte. Eine Einzelkarte kostet 9 €.'}],
+     ['mit Jahreskarte',72,'€',{'12':'12 € sind nur die drei Besuche. Die Jahreskarte selbst kostet einmalig 60 €.','192':'Die 60 € zahlt man nur einmal, nicht bei jedem Besuch.','87':'Mit Jahreskarte kostet ein Besuch nur noch 4 €, nicht 9 €.'}]],
+   hints:['Einzelkarten: 3-mal 9 €. Jahreskarte: einmal 60 €, dazu 3-mal 4 €.'],
+   why:'3·9 = 27 € mit Einzelkarten, 60 + 3·4 = 72 € mit Jahreskarte.'},
+  {t:'term',name:'J',q:'Mit Einzelkarten kosten '+X+' Besuche E('+X+') = 9·'+X+'. Stelle einen Term für die Kosten (in €) mit Jahreskarte auf.',target:function(x){return 60+4*x;},
+   test:[0,1,2,3,5,10],show:[0,1,3,10],
+   forms:[['60+4*x','60 € einmalig für die Jahreskarte, dazu 4 € für jeden der x Besuche.']],
+   traps:[[function(x){return 64*x;},'60 + 4 darfst du nicht zusammenfassen: Die 60 € zahlt man einmal, die 4 € bei jedem Besuch.'],
+     [function(x){return 60*x+4;},'Die Zahlen sind vertauscht: Die 60 € zahlt man einmal, die 4 € bei jedem Besuch.'],
+     [function(x){return 4*x;},'4·x sind nur die Besuche. Die 60 € für die Jahreskarte fehlen.'],
+     [function(x){return 60+9*x;},'Mit Jahreskarte kostet ein Besuch nur noch 4 €.'],
+     [function(x){return 60+x;},'Jeder Besuch kostet 4 €, nicht 1 €.']],
+   hints:['Was zahlt man nur einmal? Was zahlt man bei jedem Besuch?',
+     'Eine Lösung ist J('+X+') = 60 + 4·'+X+': Der Summand 60 ist der einmalige Preis, das Produkt 4·'+X+' sind die Kosten für '+X+' Besuche.'],
+   lives:[['E','9*x']],
+   why:'Unter dem Regler siehst du jetzt beide Kosten. Im Bild ist der einmalige Anteil blau, der Anteil für die Besuche orange.'},
+  {t:'nums',q:'Forsche mit dem Regler: Bei wie vielen Besuchen kosten beide Möglichkeiten gleich viel?',
+   fields:[['Besuche',12,null,{'15':'60 : 4 = 15 passt nicht: Verglichen wird mit 9 € pro Einzelkarte. Pro Besuch spart man 9 − 4 = 5 €.','7':'Prüfe mit dem Regler: Bei 7 Besuchen kosten Einzelkarten 63 €, die Jahreskarte 88 €.'}]],
+   hints:['Bewege den Regler, bis beide Balken gleich lang sind.','Pro Besuch spart man mit Jahreskarte 5 €. Wann sind die 60 € wieder hereingeholt?'],
+   why:'E(12) = 108 und J(12) = 60 + 48 = 108. Nach 12 Besuchen ist die Jahreskarte hereingeholt, denn 12·5 € = 60 €.'},
+  {t:'choice',q:'Für wen lohnt sich die Jahreskarte?',opts:[
+    ['Für alle, die öfter als 12-mal im Jahr klettern.',1],
+    ['Für alle, denn 4 € sind weniger als 9 €.',0,'Die 60 € müssen erst wieder eingespart werden. Bei 3 Besuchen zahlt man 72 € statt 27 €.'],
+    ['Für niemanden, denn 60 € sind zu viel.',0,'Vergleiche die Kosten für 20 Besuche: 180 € mit Einzelkarten, 140 € mit Jahreskarte.']],
+   hints:['Vergleiche die Balken links und rechts von der Stelle, an der beide gleich lang sind.'],
+   why:'Bis 11 Besuche sind Einzelkarten günstiger, ab 13 Besuchen die Jahreskarte.'},
+  {t:'nums',q:'Die Halle erhöht den Preis der Jahreskarte auf 80 €. Bei wie vielen Besuchen kosten beide Möglichkeiten jetzt gleich viel?',
+   fields:[['Besuche',16,null,{'20':'80 : 4 = 20 passt nicht: Pro Besuch spart man 9 − 4 = 5 €, nicht 4 €.','12':'12 war die Lösung bei 60 €. Jetzt müssen 80 € eingespart werden.'}]],
+   hints:['Der neue Term heißt 80 + 4·'+X+'. Pro Besuch spart man weiterhin 5 €.','80 : 5 = ?'],
+   why:'Im Term ändert sich nur der feste Summand: 80 + 4·'+X+'. Probe: 9·16 = 144 und 80 + 4·16 = 144.'}
+ ]},
+{id:'build',lvl:2,title:'Muster erfinden',kind:'Term → Bild',v:'n',build:{figs:[1,2,3],cols:5,rows:4},
+ intro:'Jetzt bist du dran: Erfinde ein eigenes Punktmuster zum Term <b>T('+V+') = 4·'+V+' + 2</b>. Tippe auf die Felder, um Punkte zu setzen.',
+ learn:'Zu einem Term kannst du selbst ein Bild entwickeln: Der feste Teil bleibt in jeder Figur gleich, der Teil mit '+V+' wächst.',
+ steps:[
+  {t:'nums',q:'Berechne zuerst die Termwerte von T('+V+') = 4·'+V+' + 2.',
+   fields:[['T(1)',6,null,{'12':'Du hast erst 1 + 2 gerechnet. Es gilt Punkt vor Strich: erst 4·1, dann + 2.','4':'Die + 2 fehlt noch.'}],
+     ['T(2)',10,null,{'16':'Du hast erst 2 + 2 gerechnet. Es gilt Punkt vor Strich: erst 4·2, dann + 2.','8':'Die + 2 fehlt noch.'}],
+     ['T(3)',14,null,{'20':'Du hast erst 3 + 2 gerechnet. Es gilt Punkt vor Strich: erst 4·3, dann + 2.','12':'Die + 2 fehlt noch.'}]],
+   hints:['Setze für '+V+' nacheinander 1, 2 und 3 ein. Punkt vor Strich!','T(2) = 4·2 + 2 = 10.'],why:'So viele Punkte brauchen deine drei Figuren: 6, 10 und 14.'},
+  {t:'build',q:'Lege die Figuren 1, 2 und 3 so, dass die Punktzahlen zum Term passen. Für Profis: Baue so, dass man sieht, was gleich bleibt und was dazukommt.',
+   target:function(n){return 4*n+2;},known:true,
+   sample:function(g){var a=[0,5];for(var c=1;c<=g+1;c++)for(var r=0;r<4;r++)a.push(r*5+c);return a;},
+   comment:function(G){
+     var nested=G[0].every(function(c){return G[1].indexOf(c)>=0;})&&G[1].every(function(c){return G[2].indexOf(c)>=0;});
+     return nested?'In deinem Muster steckt jede Figur in der nächsten, und es kommen jeweils 4 Punkte dazu. So sieht man das 4·n besonders gut.'
+       :'Die Punktzahlen 6, 10 und 14 stimmen. Noch deutlicher wird das 4·n, wenn jede Figur die vorige enthält und nur 4 Punkte dazukommen.';},
+   hints:['Figur 1 braucht 6 Punkte, Figur 2 braucht 10, Figur 3 braucht 14.','Eine Idee: Setze 2 Punkte als festen Start. Lege dann in Figur '+V+' genau '+V+' Vierergruppen dazu – so sieht man die + 2 und das 4·'+V+'.'],
+   why:' Erkläre dein Muster deiner Nachbarin oder deinem Nachbarn: Wo ist die + 2, wo das 4·'+V+'?'},
+  {t:'choice',q:'Woran erkennt man in einem guten Muster das „4·'+V+'“?',opts:[
+    ['Von Figur zu Figur kommen immer 4 Punkte dazu.',1],
+    ['Jede Figur hat genau 4 Punkte.',0,'Dann würde das Muster nicht wachsen, und der Term hinge nicht von n ab.'],
+    ['Die Punktzahl wird von Figur zu Figur vervierfacht.',0,'6 → 10 → 14 ist keine Vervierfachung. 4·n bedeutet n Vierergruppen.']],
+   hints:['Vergleiche deine Figuren 1, 2 und 3.'],
+   why:'4·'+V+' bedeutet: '+V+' Gruppen mit je 4 Punkten. Mit jedem Schritt kommt eine Gruppe dazu. Die 2 ist der feste Teil.'}
+ ]},
+{id:'stories',lvl:2,title:'Geschichten zu Termen',kind:'Text ↔ Term',v:'x',fig:figStories,low:true,min:1,max:10,start:2,
+ intro:'Ein Term kann zu vielen Situationen passen, aber nicht zu jeder. Die Rechenkette zeigt, in welcher Reihenfolge ein Term rechnet.',
+ unit:function(x){return 'Einsetzung '+x;},
+ learn:'Klammern ändern die Reihenfolge und damit die Bedeutung: 5·'+X+' + 3 und 5·('+X+' + 3) erzählen verschiedene Geschichten.',
+ steps:[
+  {t:'choice',mode:'A',q:'Welche Situation passt zum Term 5·'+X+' + 3?',opts:[
+    ['Ein Paket enthält x Hefte zu je 5 €. Der Versand kostet 3 €.',1],
+    ['x Freunde kaufen je ein Heft für 5 € und je einen Stift für 3 €.',0,'Dann zahlt jeder 5 + 3 Euro, zusammen (5 + 3)·x. Die 3 käme x-mal vor, im Term steht sie aber nur einmal.'],
+    ['Ein Heft kostet 5 €. Beim Kauf von x Heften werden 3 € abgezogen.',0,'Das wäre 5·x − 3. Im Term steht ein Plus.']],
+   hints:['Die Rechenkette zeigt: erst mal 5, dann plus 3. Was wird x-mal gezählt, was nur einmal?'],
+   why:'Die 5 wird '+X+'-mal gezählt (5 € je Heft), die 3 nur einmal (Versand). Der Term ist eine Summe aus dem Produkt 5·'+X+' und der Zahl 3.'},
+  {t:'nums',mode:'AB',q:'Die untere Rechenkette gehört zu 5·('+X+' + 3). Berechne beide Terme für '+X+' = 4.',
+   fields:[['5·x + 3',23,null,{'35':'Du hast erst 4 + 3 gerechnet. Ohne Klammer gilt Punkt vor Strich: erst 5·4, dann + 3.'}],
+     ['5·(x + 3)',35,null,{'23':'Hier steht eine Klammer: erst 4 + 3 = 7, dann 5·7.'}]],
+   hints:['Folge den Rechenketten: oben erst · 5, dann + 3. Unten erst + 3, dann · 5.','Oben: 20 + 3. Unten: 5·7.'],
+   why:'Die Klammer ändert die Reihenfolge und den Wert: 23 und 35. Der Unterschied ist immer 12, denn mit Klammer wird auch die 3 verfünffacht.'},
+  {t:'choice',mode:'B',q:'Beschreibe den Term 5·('+X+' + 3) mit Fachbegriffen.',opts:[
+    ['Ein Produkt. Der zweite Faktor ist die Summe x + 3.',1],
+    ['Eine Summe. Der erste Summand ist das Produkt 5·x.',0,'Das beschreibt 5·x + 3. Mit Klammer wird zuletzt multipliziert, also ist der Term ein Produkt.'],
+    ['Eine Summe aus 5, x und 3.',0,'Zwischen 5 und der Klammer steht ein Malpunkt, kein Plus.']],
+   hints:['Entscheidend ist die Rechenart, die zuletzt ausgeführt wird. Schau auf den letzten Schritt der Rechenkette.'],
+   why:'Die letzte Rechenart bestimmt die Art des Terms. Eine passende Geschichte: '+X+' Kinder und 3 Erwachsene zahlen je 5 € Eintritt.'},
+  {t:'term',name:'K',mode:'N',q:'Jetzt du: Eine Klasse mit '+X+' Kindern und 2 Lehrkräften besucht ein Museum. Jede Person zahlt 4 € Eintritt, die Führung kostet für die ganze Gruppe 30 €. Stelle einen Term für die Gesamtkosten (in €) auf.',
+   target:function(x){return 4*(x+2)+30;},test:[1,2,3,5,10,24],show:[1,2,10,24],
+   forms:[['4*(x+2)+30','x + 2 Personen zahlen je 4 €, dazu einmal 30 € für die Führung.'],
+     ['4*x+38','Die 8 € für die beiden Lehrkräfte und die 30 € sind schon zu 38 € zusammengefasst.'],
+     ['4*x+8+30','Kinder, Lehrkräfte und Führung getrennt: 4·x, 8 und 30.'],
+     ['4*x+4*2+30','Kinder, Lehrkräfte und Führung getrennt: 4·x, 4·2 und 30.',null,1]],
+   traps:[[function(x){return 4*x+2+30;},'Auch jede Lehrkraft zahlt 4 €. Setze eine Klammer um x + 2, damit die ganze Personenzahl mit 4 multipliziert wird.'],
+     [function(x){return 4*x+30;},'Die beiden Lehrkräfte zahlen auch Eintritt. Sie fehlen noch.'],
+     [function(x){return 34*(x+2);},'Die Führung wird nur einmal für die ganze Gruppe bezahlt, nicht von jeder Person.'],
+     [function(x){return 4*(x+2+30);},'Die 30 € gehören nicht in die Klammer: Sie sind kein Eintritt, der mit 4 multipliziert wird.'],
+     [function(x){return 4*(x+2);},'Das ist nur der Eintritt. Die Führung für 30 € fehlt.']],
+   hints:['Wie viele Personen sind es insgesamt? Was zahlt jede Person, was zahlt die Gruppe nur einmal?','Es sind '+X+' + 2 Personen. Jede zahlt 4 €: 4·('+X+' + 2).',
+     'Eine Lösung ist K('+X+') = 4·('+X+' + 2) + 30: Eintritt für alle Personen plus einmal die Führung.'],
+   why:'Für eine Klasse mit 24 Kindern sind das 4·26 + 30 = 134 €.'},
+  {t:'choice',mode:'N',q:'Für das Klassenfrühstück werden '+X+' Brezen zu je 0,80 € und <i>y</i> Säfte zu je 1,20 € gekauft. Welcher Term gibt den Gesamtpreis (in €) an?',opts:[
+    ['0,8·x + 1,2·y',1],
+    ['2·(x + y)',0,'Dann würde jedes Teil 2 € kosten, egal ob Breze oder Saft.'],
+    ['1,2·x + 0,8·y',0,'Hier sind die Preise vertauscht: Die Brezen (x) kosten 0,80 €.'],
+    ['0,8·1,2·x·y',0,'Preise verschiedener Waren werden addiert, nicht multipliziert. Für x = 1 und y = 1 käme 0,96 € statt 2 € heraus.']],
+   hints:['Rechne für die Brezen und die Säfte getrennt und addiere.'],
+   why:'Mit zwei Variablen: 0,8·'+X+' für die Brezen und 1,2·<i>y</i> für die Säfte. Für 25 Brezen und 10 Säfte sind es 20 € + 12 € = 32 €.'}
+ ]},
+{id:'field',lvl:2,title:'Punktfeld',kind:'Produkt und Klammer',v:'n',fig:dotRect,min:1,max:6,start:2,
+ intro:'Ein Punktfeld hat '+V+' Zeilen. In jeder Zeile liegen 2 Punkte mehr, als es Zeilen gibt.',
+ unit:function(n){return pl(n,'Zeile','Zeilen');},
+ learn:'Ein Produkt wie '+V+'·('+V+' + 2) lässt sich als Rechteck deuten: Zeilen mal Punkte pro Zeile. Die Klammer hält die Zeilenlänge zusammen.',
+ steps:[
+  {t:'nums',q:'Wie viele Punkte hat das Feld?',
+   fields:[['n = 1',3],['n = 2',8,null,{'6':'Bei 2 Zeilen liegen 4 Punkte in jeder Zeile, nicht 3.'}],['n = 3',15,null,{'9':'Bei 3 Zeilen liegen 5 Punkte in jeder Zeile, nicht 3.','12':'Bei 3 Zeilen liegen 5 Punkte in jeder Zeile, nicht 4.'}]],
+   hints:['Du musst nicht einzeln zählen: Zeilen mal Punkte pro Zeile.'],why:'1·3 = 3, 2·4 = 8, 3·5 = 15. Der Zuwachs wird immer größer.'},
+  {t:'term',q:'Stelle einen Term für die Anzahl der Punkte auf.',target:function(n){return n*(n+2);},
+   forms:[['n*(n+2)','n Zeilen mit je n + 2 Punkten.','rows'],
+     ['n^+2*n','Ein Quadrat aus n mal n Punkten und daneben zwei Spalten mit je n Punkten.','sq'],
+     ['(n+1)^-1','Verschiebt man die letzte Spalte unter das Feld, entsteht ein Quadrat mit Seitenlänge n + 1, dem ein Punkt fehlt.']],
+   traps:[[function(n){return n*n+2;},'Ohne Klammer gilt Punkt vor Strich: Es wird nur n·n gerechnet und dann 2 addiert. Die ganze Zeilenlänge n + 2 muss mit n multipliziert werden.'],
+     [function(n){return 2*n+2;},'Das Feld wächst in zwei Richtungen. Du brauchst ein Produkt: Zeilen mal Punkte pro Zeile.'],
+     [function(n){return n*n;},'n·n wäre ein Quadrat. In jeder Zeile liegen aber 2 Punkte mehr.'],
+     [function(n){return 3*n;},'3·n passt nur für n = 1. Bei 2 Zeilen sind es 8 Punkte, nicht 6.']],
+   hints:['Wie viele Punkte liegen bei '+V+' Zeilen in einer Zeile?',V+' Zeilen mit je '+V+' + 2 Punkten. Klammer nicht vergessen!',
+     'Eine Lösung ist T('+V+') = '+V+'·('+V+' + 2): Anzahl der Zeilen mal Punkte pro Zeile.'],
+   why:''},
+  {t:'choice',q:'Beschreibe den Term '+V+'·('+V+' + 2) mit Fachbegriffen.',opts:[
+    ['Ein Produkt aus n und der Summe n + 2.',1],
+    ['Eine Summe aus dem Produkt n·n und der Zahl 2.',0,'Das beschreibt n·n + 2, also den Term ohne Klammer. Der hat andere Werte: für n = 3 nur 11 statt 15.'],
+    ['Eine Potenz mit der Basis n.',0,'Eine Potenz wäre n². Hier werden zwei verschiedene Faktoren multipliziert.']],
+   hints:['Welche Rechenart wird zuletzt ausgeführt?'],
+   why:'Zuletzt wird multipliziert, also ist der Term ein Produkt. Der erste Faktor ist die Zeilenzahl, der zweite die Zeilenlänge.'},
+  {t:'pick',q:'Welche Färbung passt zum Term '+V+'² + 2·'+V+'?',pn:4,opts:[
+    ['sq',1],['rows',0,'Hier sind die Zeilen gefärbt. Das passt zu n·(n + 2).'],['top',0,'Hier ist nur die erste Zeile hervorgehoben. Das passt zu (n + 2) + (n − 1)·(n + 2).']],
+   hints:[V+'² ist ein Quadrat aus '+V+' mal '+V+' Punkten. Wo siehst du es?','Neben dem Quadrat bleiben zwei Spalten mit je '+V+' Punkten.'],
+   okMode:'sq',why:'Links ein Quadrat aus '+k1(V+'²')+' Punkten, rechts zwei Spalten mit zusammen '+k2('2·'+V)+' Punkten. '+V+'·('+V+' + 2) und '+V+'² + 2·'+V+' sind gleichwertig.',
+   alt:{form:1,q:'Du hast mit '+V+'² + 2·'+V+' gerechnet. Welche Färbung passt zum Term '+V+'·('+V+' + 2)?',opts:[
+    ['rows',1],['sq',0,'Das ist deine eigene Idee: Quadrat und zwei Spalten.'],['top',0,'Hier ist nur die erste Zeile hervorgehoben. Das passt zu (n + 2) + (n − 1)·(n + 2).']],
+    hints:[V+'·(…) bedeutet: '+V+' gleich große Gruppen.','Jede Zeile hat '+V+' + 2 Punkte, und es gibt '+V+' Zeilen.'],
+    okMode:'rows',why:'Jede der '+V+' Zeilen hat '+V+' + 2 Punkte. Beide Terme zählen dasselbe Feld und sind deshalb gleichwertig.'}},
+  {t:'nums',q:'Wie viele Punkte hat das Feld mit 20 Zeilen?',
+   fields:[['n = 20',440,null,{'402':'Du hast 20·20 + 2 gerechnet. Die Klammer sagt: erst 20 + 2, dann mal 20.','400':'20·20 wäre ein Quadrat. Jede Zeile hat aber 22 Punkte.','42':'Das Feld wächst in zwei Richtungen: 20 Zeilen mit je 22 Punkten.'}]],
+   hints:['20 Zeilen mit je 22 Punkten.'],why:'20·22 = 440. Auch 20² + 2·20 = 400 + 40 = 440.'}
+ ]},
+/* ====================== Level 3 ====================== */
+{id:'grid',lvl:3,title:'Rankgitter',kind:'Term aufstellen',v:'n',fig:gridSticks,min:1,max:5,start:2,
+ intro:'Ein quadratisches Rankgitter wird aus gleich langen Stäben gebaut. Es hat '+V+' Felder in jeder Richtung.',
+ unit:function(n){return n+' × '+n+' Felder';},
+ learn:'Bei einem Produkt aus mehreren Faktoren lohnt es sich, jeden Faktor einzeln zu deuten: 2 Richtungen, '+V+' + 1 Linien, '+V+' Stäbe pro Linie.',
+ steps:[
+  {t:'nums',q:'Wie viele Stäbe braucht man?',
+   fields:[['n = 1',4],['n = 2',12,null,{'16':'16 wären es bei vier einzelnen Feldern. Benachbarte Felder teilen sich aber Stäbe.','8':'Zähle auch die Stäbe im Inneren des Gitters.'}],
+     ['n = 3',24,null,{'36':'36 wären es bei neun einzelnen Feldern. Benachbarte Felder teilen sich aber Stäbe.','12':'Zähle auch die Stäbe im Inneren des Gitters.','20':'Der Zuwachs bleibt nicht gleich: Von 4 auf 12 sind es 8, danach kommen mehr dazu.'}]],
+   hints:['Zähle geordnet: erst alle waagrechten Stäbe, dann alle senkrechten.','Bei '+V+' = 2 gibt es 3 waagrechte Linien mit je 2 Stäben, also 6. Senkrecht sind es genauso viele.'],
+   why:'4, 12, 24: Der Zuwachs (8, dann 12) wächst mit. Ein Term der Form „Zahl·'+V+' + Zahl“ reicht hier nicht.'},
+  {t:'choice',mode:'hv',q:'Im Bild sind die waagrechten Stäbe grün. Welcher Term gibt ihre Anzahl an?',opts:[
+    ['n·(n + 1)',1],
+    ['n·n',0,'Zähle die waagrechten Linien: Es ist eine mehr als Felder, denn unten schließt eine Linie das Gitter ab.'],
+    ['2·n',0,'Für n = 3 sind es 12 grüne Stäbe, nicht 6.']],
+   hints:['Wie viele waagrechte Linien gibt es? Aus wie vielen Stäben besteht jede Linie?'],
+   why:'Es gibt '+V+' + 1 waagrechte Linien, und jede besteht aus '+V+' Stäben.'},
+  {t:'term',q:'Stelle einen Term für die Anzahl aller Stäbe auf.',target:function(n){return 2*n*(n+1);},test:[1,2,3,4,5,6,7,8],
+   forms:[['2*n*(n+1)','Waagrecht und senkrecht gibt es gleich viele Stäbe, nämlich je n·(n + 1).','hv'],
+     ['n*(n+1)+n*(n+1)','Waagrechte Stäbe plus senkrechte Stäbe, je n·(n + 1).','hv',1],
+     ['2*n^+2*n','Jedes der n² Felder bekommt einen oberen und einen linken Stab. Dazu kommen 2·n Stäbe für den Abschluss unten und rechts.','tl'],
+     ['4*n+2*n*(n-1)','4·n Stäbe bilden den Rand, 2·n·(n − 1) Stäbe liegen im Inneren.','outer']],
+   traps:[[function(n){return 4*n*n;},'4·n² zählt für jedes der n² Felder 4 eigene Stäbe. Benachbarte Felder teilen sich aber Stäbe.'],
+     [function(n){return n*(n+1);},'Das sind nur die waagrechten Stäbe. Die senkrechten fehlen noch.'],
+     [function(n){return 2*n*n;},'Fast: Die Abschlusslinien unten und rechts fehlen noch.'],
+     [function(n){return 4*n;},'4·n ist nur der Rand des Gitters. Die Stäbe im Inneren fehlen.']],
+   hints:['Du kennst die waagrechten Stäbe: '+V+'·('+V+' + 1). Wie viele senkrechte gibt es?','Senkrecht sind es genauso viele. Du brauchst also das Doppelte.',
+     'Eine Lösung ist T('+V+') = 2·'+V+'·('+V+' + 1): zwei Richtungen mit je '+V+' + 1 Linien aus je '+V+' Stäben.'],
+   why:''},
+  {t:'pick',q:'Tarek rechnet 4·'+V+' + 2·'+V+'·('+V+' − 1). Welche Färbung zeigt seine Idee?',pn:3,opts:[
+    ['outer',1],['hv',0,'Hier sind waagrechte und senkrechte Stäbe getrennt gefärbt. Das passt zu n·(n + 1) + n·(n + 1).'],
+    ['tl',0,'Hier sind die Abschlusslinien unten und rechts hervorgehoben. Das passt zu 2·n² + 2·n.']],
+   hints:['Der Term ist eine Summe. Suche eine Gruppe mit 4·'+V+' Stäben.','Der Rand des Gitters hat 4 Seiten mit je '+V+' Stäben.'],
+   okMode:'outer',why:'Der Rand besteht aus '+k1('4·'+V)+' Stäben. Im Inneren liegen '+V+' − 1 Linien je Richtung mit je '+V+' Stäben, also '+k2('2·'+V+'·('+V+' − 1)')+'.',
+   alt:{form:3,q:'Du hast Rand und Inneres getrennt gezählt. Tarek rechnet 2·'+V+'² + 2·'+V+'. Welche Färbung zeigt seine Idee?',opts:[
+    ['tl',1],['hv',0,'Hier sind waagrechte und senkrechte Stäbe getrennt gefärbt. Das passt zu n·(n + 1) + n·(n + 1).'],
+    ['outer',0,'Das ist deine eigene Idee: Rand und Inneres.']],
+    hints:['2·'+V+'² bedeutet: Zu jedem der '+V+'² Felder gehören 2 Stäbe.','Gib jedem Feld seinen oberen und seinen linken Stab. Welche Stäbe bleiben übrig?'],
+    okMode:'tl',why:'Jedes der '+V+'² Felder bekommt einen oberen und einen linken Stab: '+k1('2·'+V+'²')+'. Übrig bleiben die Abschlusslinien unten und rechts mit '+k2('2·'+V)+' Stäben.'}},
+  {t:'nums',q:'Ein Gitter hat 10 Felder in jeder Richtung. Wie viele Stäbe braucht man?',
+   fields:[['n = 10',220,null,{'200':'200 sind 2·10². Die Abschlusslinien unten und rechts fehlen.','400':'400 wären 4 Stäbe für jedes der 100 Felder. Benachbarte Felder teilen sich aber Stäbe.','110':'110 sind nur die Stäbe einer Richtung.'}]],
+   hints:['11 Linien je Richtung, jede mit 10 Stäben.'],why:'2·10·11 = 220. Zum Vergleich: 100 einzelne Felder bräuchten 400 Stäbe.'}
+ ]},
+{id:'trick',lvl:3,title:'Zahlentrick',kind:'Text → Term',v:'x',fig:figTrick,low:true,min:1,max:10,start:4,
+ intro:'Ein Zahlentrick: „Denke dir eine Zahl. Verdopple sie. Addiere 6. Halbiere das Ergebnis. Ziehe die gedachte Zahl ab.“ '+X+' ist die gedachte Zahl.',
+ unit:function(x){return 'gedachte Zahl '+x;},
+ learn:'Mit einem Term lässt sich begründen, warum ein Zahlentrick immer funktioniert – für jede Zahl, nicht nur für die ausprobierten.',
+ steps:[
+  {t:'nums',mode:'T0',q:'Führe den Trick für zwei Zahlen im Kopf aus. Was kommt am Ende heraus?',
+   fields:[['x = 4',3,null,{'7':'7 ist das Ergebnis nach dem Halbieren. Danach wird noch die gedachte Zahl 4 abgezogen.','10':'Halbiert wird das ganze Zwischenergebnis 14, nicht nur die 6.'}],
+     ['x = 10',3,null,{'13':'13 ist das Ergebnis nach dem Halbieren. Danach wird noch die gedachte Zahl 10 abgezogen.','16':'Halbiert wird das ganze Zwischenergebnis 26, nicht nur die 6.'}]],
+   hints:['Für 4: verdoppeln 8, plus 6 ergibt 14, halbieren 7, minus 4 ergibt ?'],
+   okMode:'T',why:'Beide Male kommt 3 heraus. Die Rechenkette zeigt jetzt alle Zwischenergebnisse – probiere weitere Zahlen aus.'},
+  {t:'term',name:'Z',mode:'T',q:'Übersetze die ersten drei Schritte (verdoppeln, 6 addieren, halbieren) in einen Term.',target:function(x){return (2*x+6)/2;},
+   test:[1,2,3,4,5,7,10],show:[1,2,4,10],
+   forms:[['(2*x+6)/2','Wörtlich übersetzt: erst verdoppeln, dann 6 addieren, dann das Ganze halbieren. Die Klammer sorgt dafür, dass die ganze Summe geteilt wird.'],
+     ['x+3','Das ist schon vereinfacht: Die Hälfte von 2·x ist x, die Hälfte von 6 ist 3.']],
+   traps:[[function(x){return 2*x+3;},'Ohne Klammer wird nur die 6 halbiert. Halbiert werden soll aber das ganze Zwischenergebnis 2·x + 6.'],
+     [function(x){return 2*x+6;},'Das Halbieren fehlt noch.'],
+     [function(x){return (x+6)/2;},'Zuerst wird die gedachte Zahl verdoppelt: 2·x.'],
+     [function(x){return x+6;},'Verdoppelt wird nur die gedachte Zahl. Die 6 kommt erst danach dazu und wird dann halbiert.'],
+     [function(x){return 3;},'3 ist das Endergebnis. Gesucht ist der Term für das Zwischenergebnis nach dem Halbieren.']],
+   hints:['Nach dem Verdoppeln steht da 2·'+X+'. Nach dem Addieren 2·'+X+' + 6.','Halbiert wird die ganze Summe. Dafür brauchst du eine Klammer.',
+     'Eine Lösung ist Z('+X+') = (2·'+X+' + 6) : 2. Der Term ist ein Quotient, der Dividend ist die Summe 2·'+X+' + 6.'],
+   why:'Vergleiche mit der Rechenkette: Das dritte Zwischenergebnis ist immer um 3 größer als die gedachte Zahl.'},
+  {t:'choice',mode:'T',q:'Warum kommt am Ende immer 3 heraus?',opts:[
+    ['Nach dem Halbieren steht x + 3 da. Zieht man x ab, bleibt immer 3.',1],
+    ['Weil 6 : 2 = 3 ist und die gedachte Zahl gar nicht benutzt wird.',0,'Die gedachte Zahl wird benutzt: Sie wird verdoppelt, halbiert und am Ende wieder abgezogen. Erst dadurch fällt sie heraus.'],
+    ['Das klappt nur bei kleinen natürlichen Zahlen.',0,'Probiere 2,5 aus: 5, dann 11, dann 5,5 und schließlich 5,5 − 2,5 = 3. Es klappt für jede Zahl.']],
+   hints:['Halbiere 2·'+X+' + 6 in Gedanken: Was ist die Hälfte von 2·'+X+', was die Hälfte von 6?'],
+   why:'(2·'+X+' + 6) : 2 ist gleichwertig zu '+X+' + 3. Dann gilt '+X+' + 3 − '+X+' = 3, egal welche Zahl man sich denkt.'},
+  {t:'nums',mode:'T',q:'Verändere den Trick: Am Ende soll immer 5 herauskommen. Welche Zahl muss man statt 6 addieren?',
+   fields:[['statt 6',10,null,{'5':'Die addierte Zahl wird noch halbiert. Aus 5 würde am Ende 2,5.','8':'Die Hälfte von 8 ist 4. Am Ende käme also 4 heraus.'}]],
+   hints:['Am Ende bleibt immer die Hälfte der addierten Zahl übrig.','Die Hälfte soll 5 sein.'],
+   why:'(2·'+X+' + 10) : 2 ist gleichwertig zu '+X+' + 5, und '+X+' + 5 − '+X+' = 5.'},
+  {t:'term',name:'N',mode:'T',q:'Ein neuer Trick: „Denke dir eine Zahl. Addiere 4. Verdreifache das Ergebnis. Ziehe 12 ab.“ Schreibe ihn als Term.',target:function(x){return 3*(x+4)-12;},
+   test:[1,2,3,4,5,7,10],show:[1,2,5,10],
+   forms:[['3*(x+4)-12','Wörtlich übersetzt: Die Klammer sorgt dafür, dass die ganze Summe x + 4 verdreifacht wird.'],
+     ['3*x','Das ist schon vereinfacht: 3·(x + 4) enthält 3·4 = 12, und genau diese 12 wird wieder abgezogen.'],
+     ['3*x+12-12','Ausmultipliziert: 3·x + 12, davon 12 abgezogen.']],
+   traps:[[function(x){return 3*x+4-12;},'Die Klammer fehlt: Verdreifacht wird die ganze Summe x + 4, nicht nur x.'],
+     [function(x){return x+4*3-12;},'Ohne Klammer wird nur die 4 verdreifacht. Verdreifacht werden soll die ganze Summe x + 4.'],
+     [function(x){return 3*(x+4);},'Das Abziehen von 12 fehlt noch.'],
+     [function(x){return 3*(x+4-12);},'Die 12 wird erst nach dem Verdreifachen abgezogen. Sie gehört nicht in die Klammer.']],
+   hints:['Nach dem Addieren steht da '+X+' + 4. Dieses ganze Ergebnis wird verdreifacht.','Mit Klammer: 3·('+X+' + 4). Danach wird 12 abgezogen.',
+     'Eine Lösung ist N('+X+') = 3·('+X+' + 4) − 12: eine Differenz, deren Minuend das Produkt 3·('+X+' + 4) ist.'],
+   why:'Dieser Trick liefert immer das Dreifache der gedachten Zahl. Wer das Ergebnis hört, teilt durch 3 und kennt die Zahl.'}
+ ]},
+{id:'cont',lvl:3,title:'Muster fortsetzen',kind:'Bild fortsetzen',v:'n',fig:feet,min:1,max:3,start:1,build:{figs:[4],cols:6,rows:5},
+ intro:'Du siehst die ersten drei Figuren eines Punktmusters. Finde heraus, wie es weitergeht, und lege die nächste Figur selbst.',
+ unit:function(n){return 'Figur '+n;},
+ learn:'Wer ein Muster fortsetzen kann, hat seine Regel verstanden. Der Term fasst diese Regel für alle Figuren zusammen.',
+ steps:[
+  {t:'nums',q:'Wie viele Punkte haben die Figuren?',
+   fields:[['Figur 1',3],['Figur 2',6],['Figur 3',11,null,{'9':'9 Punkte bilden das Quadrat. Links und rechts unten sitzt aber noch je ein Punkt.','10':'Zähle noch einmal: 3 mal 3 Punkte im Quadrat und 2 Punkte an den Seiten.'}]],
+   hints:['Stelle den Regler nacheinander auf 1, 2 und 3.','Figur 3: ein Quadrat aus 3 mal 3 Punkten und 2 Punkte an den Seiten.'],
+   why:'3, 6, 11: Der Zuwachs ist erst 3, dann 5. Er bleibt also nicht gleich.'},
+  {t:'build',q:'Lege Figur 4 im Baufeld.',target:function(){return 18;},
+   traps:{'16':'16 Punkte bilden das Quadrat. Die beiden Punkte links und rechts unten fehlen noch.','14':'Der Zuwachs bleibt nicht bei 3: Das Quadrat wächst um eine ganze Zeile und eine ganze Spalte.','15':'Der Zuwachs wird größer: von 3 auf 6 sind es 3, von 6 auf 11 sind es 5. Wie viele kommen jetzt dazu?','17':'Fast. Vergleiche mit Figur 3: Welcher Teil wächst, welcher bleibt gleich?','20':'Das Quadrat hat in Figur 4 die Seitenlänge 4. Die Zahl der Extrapunkte bleibt bei 2.'},
+   sample:function(){var a=[];for(var r=0;r<4;r++)for(var c=1;c<=4;c++)a.push(r*6+c);a.push(18,23);return a;},
+   comment:function(G){
+     var g=G[0],sq=false;
+     for(var r0=0;r0<=1;r0++)for(var c0=0;c0<=2;c0++){var ok=true;for(var r=0;r<4;r++)for(var c=0;c<4;c++)if(g.indexOf((r0+r)*6+c0+c)<0)ok=false;if(ok)sq=true;}
+     return sq?'In deiner Figur erkennt man das Quadrat aus 4 mal 4 Punkten und die 2 Extrapunkte.'
+       :'Die Anzahl 18 stimmt. Vergleiche die Form noch mit den Figuren 1 bis 3: Dort steckt immer ein Quadrat mit 2 Extrapunkten.';},
+   hints:['In jeder Figur steckt ein Quadrat. Wie groß ist es in Figur 4?','Figur 4 besteht aus einem Quadrat mit 4 mal 4 Punkten und je einem Punkt links und rechts neben der untersten Zeile: 16 + 2 Punkte.'],
+   why:''},
+  {t:'term',q:'Stelle einen Term für die Anzahl der Punkte in Figur '+V+' auf.',target:function(n){return n*n+2;},
+   forms:[['n^+2','Ein Quadrat aus n mal n Punkten und 2 Extrapunkte.','A'],
+     ['(n+2)+n*(n-1)','Die unterste Zeile hat n + 2 Punkte, darüber liegen n − 1 Zeilen mit je n Punkten.','R']],
+   traps:[[function(n){return 3*n;},'3·n passt für die ersten beiden Figuren. Figur 3 hat aber 11 Punkte, nicht 9.'],
+     [function(n){return (n+1)*(n+2)/2;},'Dieser Term liefert 3, 6, 10. Figur 3 hat aber 11 Punkte.'],
+     [function(n){return n*n;},'n² zählt nur das Quadrat. Die 2 Extrapunkte fehlen.'],
+     [function(n){return 2*n+2;},'Das Quadrat wächst in zwei Richtungen. Dafür brauchst du n·n oder n².'],
+     [function(n){return n*(n+2);},'Die Klammer macht hier zu viel: Das wäre ein Rechteck mit n Zeilen und n + 2 Spalten. Nur die unterste Zeile ist länger.']],
+   hints:['Welcher Teil der Figur wächst, welcher bleibt gleich?','Das Quadrat hat '+V+' mal '+V+' Punkte. Die 2 Punkte an den Seiten sind in jeder Figur da.',
+     'Eine Lösung ist T('+V+') = '+V+'² + 2: Die Potenz '+V+'² steht für das Quadrat, der Summand 2 für die Extrapunkte.'],
+   okMode:'A',why:'Probe: 1 + 2 = 3, 4 + 2 = 6, 9 + 2 = 11 und 16 + 2 = 18.'},
+  {t:'choice',q:'Lia behauptet: „Figur 10 hat doppelt so viele Punkte wie Figur 5.“ Stimmt das?',opts:[
+    ['Nein. Figur 5 hat 27 Punkte, Figur 10 hat 102 – das ist fast das Vierfache.',1],
+    ['Ja, doppelte Figurennummer bedeutet doppelt so viele Punkte.',0,'Rechne nach: T(5) = 5² + 2 = 27 und T(10) = 10² + 2 = 102. Das Doppelte von 27 wäre 54.'],
+    ['Nein, Figur 10 hat genau 5 Punkte mehr.',0,'Der Zuwachs ist viel größer: T(5) = 27 und T(10) = 102.']],
+   hints:['Berechne T(5) und T(10) mit deinem Term und vergleiche.'],
+   why:'Wegen '+V+'² wächst die Punktzahl nicht gleichmäßig: Verdoppelt man '+V+', vervierfacht sich das Quadrat.'}
+ ]},
+{id:'stage',lvl:3,title:'Absperr­band',kind:'Sachaufgabe',v:'a',fig:stage,min:1,max:11,start:4,
+ intro:'Vor einer Bühne wird mit 24 m Absperrband ein rechteckiger Bereich abgetrennt. Die Bühne bildet eine Seite, das Band die drei anderen. '+AA+' ist die Tiefe des Bereichs (in m).',
+ unit:function(a){return 'Tiefe '+a+' m';},
+ learn:'Mit einem Term kannst du forschen: Setze viele Werte ein und beobachte, wie sich der Termwert verändert.',
+ steps:[
+  {t:'nums',q:'Das ganze Band wird verbraucht. Wie breit ist der Bereich?',
+   fields:[['für a = 4',16,'m',{'20':'Das Band läuft an beiden Seiten 4 m nach vorne. Die Tiefe muss zweimal abgezogen werden.','8':'Hier wird nichts halbiert: Die vierte Seite ist die Bühne, das Band bildet nur eine Breitseite.'}],
+     ['für a = 10',4,'m',{'14':'Das Band läuft an beiden Seiten 10 m nach vorne. Die Tiefe muss zweimal abgezogen werden.','2':'Hier wird nichts halbiert: Die vierte Seite ist die Bühne.'}]],
+   hints:['Das Band bildet zwei Seitenstücke der Länge '+AA+' und ein Stück für die Breite.','Für '+AA+' = 4: 24 m − 4 m − 4 m.'],
+   why:'Von 24 m gehen zwei Seitenstücke ab: 24 − 2·4 = 16 und 24 − 2·10 = 4.'},
+  {t:'term',name:'B',q:'Stelle einen Term für die Breite des Bereichs (in m) auf.',target:function(a){return 24-2*a;},test:[1,2,3,5,7.5,11],show:[1,4,7.5,10],
+   forms:[['24-2*a','Von den 24 m Band gehen zwei Seitenstücke der Länge a ab.'],
+     ['24-a-a','Erst das linke, dann das rechte Seitenstück abgezogen.',null,1],
+     ['2*(12-a)','Das Doppelte von 12 − a: Die halbe Breite ist 12 − a.']],
+   traps:[[function(a){return 24-a;},'Es gibt zwei Seitenstücke der Länge a, links und rechts.'],
+     [function(a){return 12-a;},'12 − a ist nur die halbe Breite. Hier wird nicht halbiert, denn die vierte Seite ist die Bühne.'],
+     [function(a){return (24-a)/2;},'Halbiert wird hier nichts. Zieh einfach beide Seitenstücke von den 24 m ab.'],
+     [function(a){return 24+2*a;},'Die Seitenstücke verbrauchen Band. Sie müssen abgezogen werden.']],
+   hints:['Wie viel Band verbrauchen die beiden Seiten zusammen?','Die Seiten verbrauchen 2·'+AA+'. Eine Lösung ist B('+AA+') = 24 − 2·'+AA+': ganzes Band minus beide Seitenstücke.'],
+   why:'Bewege den Regler: Dein Term zeigt die Breite an.'},
+  {t:'choice',q:'Beim nächsten Fest ist das Band 30 m lang. Wie ändert sich der Term für die Breite?',opts:[
+    ['Aus 24 wird 30, der Rest bleibt: 30 − 2·a.',1],
+    ['Aus 2·a wird 3·a.',0,'Es bleiben zwei Seitenstücke. Nur die Gesamtlänge des Bandes ändert sich.'],
+    ['Zum Term kommt + 30 dazu.',0,'Das neue Band ersetzt das alte. Es sind nicht 24 m und 30 m zusammen.']],
+   hints:['Welche Zahl im Term steht für die Länge des Bandes?'],
+   why:'Der Minuend 24 steht für die Bandlänge, der Subtrahend 2·'+AA+' für die beiden Seiten. Nur der Minuend ändert sich.'},
+  {t:'term',name:'A',q:'Zurück zum 24-m-Band: Stelle einen Term für den Flächeninhalt des Bereichs (in m²) auf.',target:function(a){return a*(24-2*a);},test:[1,2,3,5,7.5,11],show:[1,4,7.5,10],
+   forms:[['a*(24-2*a)','Tiefe mal Breite. Die Klammer hält die Breite 24 − 2·a zusammen.'],
+     ['24*a-2*a^','Das ausmultiplizierte Produkt: 24·a − 2·a².'],
+     ['2*a*(12-a)','Das Doppelte von a·(12 − a), also von Tiefe mal halber Breite.']],
+   traps:[[function(a){return a*24-2*a;},'Die Klammer fehlt: Die ganze Breite 24 − 2·a muss mit a multipliziert werden.'],
+     [function(a){return 24-2*a;},'Das ist die Breite. Für den Flächeninhalt fehlt noch der Faktor a.'],
+     [function(a){return a*(24-a);},'Die Breite ist 24 − 2·a, denn das Band hat zwei Seitenstücke.']],
+   hints:['Flächeninhalt eines Rechtecks: Tiefe mal Breite.','Die Tiefe ist '+AA+', die Breite 24 − 2·'+AA+'. Setze die Breite in Klammern.',
+     'Eine Lösung ist A('+AA+') = '+AA+'·(24 − 2·'+AA+'): ein Produkt, dessen zweiter Faktor die Differenz 24 − 2·'+AA+' ist.'],
+   why:'Unter dem Regler siehst du jetzt Breite und Flächeninhalt.'},
+  {t:'nums',q:'Forsche mit dem Regler: Für welche Tiefe '+AA+' ist die Fläche am größten? Wie groß ist sie dann?',
+   fields:[['Tiefe a',6,'m',{'8':'Bei 8 m Tiefe ist der Bereich quadratisch (8 m mal 8 m, 64 m²). Probiere kleinere Tiefen aus.','12':'Bei 12 m Tiefe wäre die Breite 0 m.'}],
+     ['größte Fläche',72,'m²',{'64':'64 m² ist die Fläche des Quadrats mit a = 8. Es geht noch größer.','70':'70 m² erreichst du bei a = 5 und a = 7. Dazwischen liegt noch ein Wert.'}]],
+   hints:['Beobachte die Anzeige A unter dem Regler, während du '+AA+' veränderst.','Suche die Stelle, an der der Wert nicht mehr steigt, sondern wieder fällt.'],
+   why:'Bei '+AA+' = 6 ist der Bereich 12 m breit und 72 m² groß. Überraschend: Das Quadrat ('+AA+' = 8) bringt hier nur 64 m², weil die Bühne eine Seite ersetzt.'}
+ ]},
+{id:'tritile',lvl:3,title:'Dreiecks­parkett',kind:'Term und Zuwachs',v:'n',fig:triTiling,min:1,max:6,start:3,anchor:'top',
+ intro:'Ein großes Dreieck wird mit kleinen Dreiecken ausgelegt. '+V+' ist die Anzahl der Reihen.',
+ unit:function(n){return pl(n,'Reihe','Reihen');},
+ learn:'Die Differenz zweier Termwerte beschreibt den Zuwachs: '+V+'² − ('+V+' − 1)² ist genau die letzte Reihe.',
+ steps:[
+  {t:'nums',mode:'last',q:'Die unterste Reihe ist orange. Wie viele kleine Dreiecke liegen in ihr?',
+   fields:[['n = 1',1],['n = 2',3,null,{'2':'Zähle auch das Dreieck, das auf der Spitze steht.'}],['n = 3',5,null,{'3':'Zähle auch die Dreiecke, die auf der Spitze stehen.'}],['n = 6',11,null,{'6':'Zähle auch die Dreiecke, die auf der Spitze stehen.','12':'Am Rand steht kein Dreieck auf der Spitze. Es sind 6 aufrechte und 5 umgedrehte.'}]],
+   hints:['Zähle aufrechte Dreiecke und Dreiecke, die auf der Spitze stehen.','In Reihe 3 sind es 3 aufrechte und 2 umgedrehte.'],
+   why:'1, 3, 5, …, 11: In jeder Reihe liegen 2 Dreiecke mehr als in der Reihe darüber.'},
+  {t:'term',name:'R',mode:'last',q:'Stelle einen Term für die Anzahl der Dreiecke in der untersten Reihe auf.',target:function(n){return 2*n-1;},inc:2,
+   forms:[['2*n-1','Doppelt so viele wie Reihen, weniger 1, weil am Rand kein umgedrehtes Dreieck steht.','ud'],
+     ['n+(n-1)','n aufrechte Dreiecke und dazwischen n − 1 umgedrehte.','ud'],
+     ['1+2*(n-1)','1 Dreieck in der ersten Reihe, dann 2 mehr für jede der n − 1 weiteren Reihen.'],
+     ['n^-(n-1)^','Alle Dreiecke minus die Dreiecke ohne die letzte Reihe.','diff']],
+   traps:[[function(n){return 2*n;},'Prüfe n = 1: Dort gibt es nur 1 Dreieck, nicht 2.'],
+     [function(n){return 2*n+1;},'Prüfe n = 1: Dort gibt es nur 1 Dreieck, nicht 3.'],
+     [function(n){return n;},'n zählt nur die aufrechten Dreiecke. Die umgedrehten dazwischen fehlen.'],
+     [function(n){return n*n;},'n² ist die Zahl aller Dreiecke. Gefragt ist nur die unterste Reihe.']],
+   hints:['In der untersten Reihe stehen '+V+' Dreiecke aufrecht. Wie viele stehen dazwischen auf der Spitze?','Zwischen '+V+' aufrechten Dreiecken ist Platz für '+V+' − 1 umgedrehte.',
+     'Eine Lösung ist R('+V+') = '+V+' + ('+V+' − 1), zusammengefasst 2·'+V+' − 1.'],
+   okMode:'last',why:'Alle diese Terme liefern 1, 3, 5, 7, …, also die ungeraden Zahlen.'},
+  {t:'nums',q:'Zähle jetzt alle kleinen Dreiecke.',
+   fields:[['n = 1',1],['n = 2',4],['n = 3',9,null,{'8':'Addiere die Reihen: 1 + 3 + 5.'}],['n = 4',16,null,{'15':'Addiere die Reihen: 1 + 3 + 5 + 7.','13':'Addiere die Reihen: 1 + 3 + 5 + 7.'}]],
+   hints:['Addiere die Reihen: 1 + 3 + 5 + …','Für '+V+' = 4: 1 + 3 + 5 + 7.'],
+   why:'1, 4, 9, 16: Die Summe der ersten ungeraden Zahlen ergibt immer eine Quadratzahl.'},
+  {t:'term',name:'T',q:'Stelle einen Term für die Anzahl aller Dreiecke auf.',target:function(n){return n*n;},
+   forms:[['n^','Die Anzahlen 1, 4, 9, 16 sind die Quadratzahlen.']],
+   traps:[[function(n){return 3*n-2;},'3·n − 2 passt für die ersten beiden Figuren. Bei n = 3 sind es aber 9 Dreiecke, nicht 7.'],
+     [function(n){return 2*n-1;},'Das ist der Term für die unterste Reihe. Gefragt sind jetzt alle Dreiecke.'],
+     [function(n){return 4*n-4;},'Der Zuwachs bleibt nicht gleich: 3, dann 5, dann 7.'],
+     [function(n){return 2*n;},'2·n passt nur zufällig für n = 2.']],
+   hints:['Schau dir die Zahlen 1, 4, 9, 16 an. Woher kennst du sie?','Es sind Quadratzahlen: 1·1, 2·2, 3·3, 4·4.',
+     'Die Lösung ist T('+V+') = '+V+'²: eine Potenz mit der Basis '+V+' und dem Exponenten 2.'],
+   why:'Das Parkett mit '+V+' Reihen hat genauso viele Dreiecke wie ein Quadrat aus '+V+' mal '+V+' Feldern.'},
+  {t:'choice',mode:'last',q:'Was beschreibt der Term '+V+'² − ('+V+' − 1)²?',opts:[
+    ['Die Anzahl der Dreiecke in der untersten Reihe.',1],
+    ['Die Anzahl aller Dreiecke im Parkett.',0,'Alle Dreiecke sind n². Hier wird davon noch etwas abgezogen.'],
+    ['Die Anzahl der Reihen.',0,'Setze n = 3 ein: 9 − 4 = 5. Es gibt aber nur 3 Reihen.']],
+   hints:[V+'² sind alle Dreiecke. ('+V+' − 1)² sind die Dreiecke eines Parketts mit einer Reihe weniger.'],
+   why:'Alle Dreiecke minus die Dreiecke ohne die letzte Reihe: Übrig bleibt die letzte Reihe. '+V+'² − ('+V+' − 1)² und 2·'+V+' − 1 sind also gleichwertig. Probe für '+V+' = 20: 400 − 361 = 39 und 2·20 − 1 = 39.'}
+ ]}
+];
+
+/* Der letzte Tipp eines Term-Auftrags führt zur Lösung hin, nennt sie aber nicht.
+   Der kommentierte Lösungssatz wird abgetrennt und erst bei „Lösung zeigen“ angezeigt. */
+M.forEach(function(m){m.steps.forEach(function(st){
+  if(st.t!=='term')return;
+  st.hints=st.hints.map(function(h){
+    var txt=h.h||h,k=txt.search(/(Eine|Die) Lösung ist /);
+    if(k<0)return h;
+    st.sol=txt.slice(k);
+    var rest=txt.slice(0,k).trim();
+    if(!rest)return null;
+    return h.h?{h:rest,mode:h.mode}:rest;
+  }).filter(Boolean);
+});});
+
+/* ================= Legenden ================= */
+/* Eintrag: [Farbe, Termteil, Bedeutung, Anzahl dieser Farbe im Bild]; note: Rechnung für das aktuelle n */
+var LEG={
+ tab:{
+  A:{e:[['c2','2·n','an den langen Seiten',function(n){return 2*n;}],['c1','2','an den Enden',function(){return 2;}]]},
+  B:{e:[['c3','n + 1','obere Reihe und ein Endstuhl',function(n){return n+1;}],['c4','n + 1','untere Reihe und der andere Endstuhl',function(n){return n+1;}]]},
+  C:{e:[['c1','4','erster Tisch mit beiden Enden',function(){return 4;}],['c2','2·(n − 1)','je 2 an den weiteren Tischen',function(n){return 2*(n-1);}]]},
+  T:{e:[['c3','n','obere Reihe',function(n){return n;}],['c4','n','untere Reihe',function(n){return n;}],['c1','2','an den Enden',function(){return 2;}]]}},
+ plus:{
+  A:{e:[['c2','4·n','vier Arme',function(n){return 4*n;}],['c1','1','Mittelpunkt',function(){return 1;}]]},
+  B:{e:[['c3','2·n + 1','waagrechte Reihe mit Mittelpunkt',function(n){return 2*n+1;}],['c4','2·n','Punkte darüber und darunter',function(n){return 2*n;}]]},
+  C:{e:[['c3','2·n + 1','waagrechte Reihe mit Mittelpunkt',function(n){return 2*n+1;}],['c4','2·n + 1','senkrechte Reihe mit Mittelpunkt',function(n){return 2*n+1;}]],
+     note:function(n){return 'Der zweifarbige Mittelpunkt wird doppelt gezählt: '+(2*n+1)+' + '+(2*n+1)+' − 1 = '+(4*n+1);}},
+  four:{e:[['c1','n + 1','rechter Arm mit Mittelpunkt',function(n){return n+1;}],['c2','n + 1','linker Arm mit Mittelpunkt',function(n){return n+1;}],['c3','n + 1','oberer Arm mit Mittelpunkt',function(n){return n+1;}],['c4','n + 1','unterer Arm mit Mittelpunkt',function(n){return n+1;}]],
+     note:function(n){return 'Der vierfarbige Mittelpunkt wird viermal gezählt: 4·'+(n+1)+' − 3 = '+(4*n+1);}}},
+ zaun:{
+  parts:{e:[['c1','n + 1','Pfosten',function(n){return n+1;}],['c2','2·n','Latten',function(n){return 2*n;}]]},
+  A:{e:[['c1','1','erster Pfosten',function(){return 1;}],['c2','3·n','je Feld 1 Pfosten und 2 Latten',function(n){return 3*n;}]]},
+  B:{e:[['c1','4','erstes Feld',function(){return 4;}],['c2','3·(n − 1)','je 3 Teile für die weiteren Felder',function(n){return 3*(n-1);}]]}},
+ path:{
+  A:{e:[['c1','2·n','über und unter dem Weg',function(n){return 2*n;}],['c2','6','zwei Dreierspalten an den Enden',function(){return 6;}]]},
+  B:{e:[['c1','2·(n + 2)','obere und untere Reihe',function(n){return 2*(n+2);}],['c2','2','links und rechts neben dem Weg',function(){return 2;}]]},
+  C:{e:[['c1','3·(n + 2)','alle Felder des Rechtecks',function(n){return 3*(n+2);}],['c2','n','dunkle Platten, mit Kreuz wieder abgezogen',function(n){return n;}]],
+     note:function(n){return 'ganzes Rechteck minus dunkle Platten: '+(3*(n+2))+' − '+n+' = '+(2*n+6);}},
+  D:{e:[['c3','n + 3','obere Reihe mit rechter Seitenplatte',function(n){return n+3;}],['c4','n + 3','untere Reihe mit linker Seitenplatte',function(n){return n+3;}]]},
+  E:{e:[['c1','8','wie bei einer einzigen dunklen Platte',function(){return 8;}],['c2','2·(n − 1)','je 2 für jede weitere dunkle Platte',function(n){return 2*(n-1);}]]}},
+ field:{
+  rows:{e:[['c3','n + 2','Punkte in jeder grünen Zeile',function(n){return Math.ceil(n/2)*(n+2);},1],['c4','n + 2','Punkte in jeder pinken Zeile',function(n){return Math.floor(n/2)*(n+2);},1]],
+     note:function(n){return n+(n===1?' Zeile':' Zeilen')+' mit je '+(n+2)+' Punkten: '+n+'·'+(n+2)+' = '+n*(n+2);}},
+  sq:{e:[['c1','n²','Quadrat aus n mal n Punkten',function(n){return n*n;}],['c2','2·n','zwei Spalten daneben',function(n){return 2*n;}]]},
+  top:{e:[['c1','n + 2','erste Zeile',function(n){return n+2;}],['c2','(n − 1)·(n + 2)','übrige Zeilen',function(n){return (n-1)*(n+2);}]]}},
+ grid:{
+  hv:{e:[['c3','n·(n + 1)','waagrechte Stäbe',function(n){return n*(n+1);}],['c4','n·(n + 1)','senkrechte Stäbe',function(n){return n*(n+1);}]]},
+  outer:{e:[['c1','4·n','Rand',function(n){return 4*n;}],['c2','2·n·(n − 1)','Stäbe im Inneren',function(n){return 2*n*(n-1);}]]},
+  tl:{e:[['c1','2·n²','oberer und linker Stab jedes Feldes',function(n){return 2*n*n;}],['c2','2·n','Abschluss unten und rechts',function(n){return 2*n;}]]}},
+ cont:{
+  A:{e:[['c1','n²','Quadrat aus n mal n Punkten',function(n){return n*n;}],['c2','2','Extrapunkte',function(){return 2;}]]},
+  R:{e:[['c3','n + 2','unterste Zeile',function(n){return n+2;}],['c4','n·(n − 1)','Zeilen darüber',function(n){return n*(n-1);}]]}},
+ tritile:{
+  last:{e:[['c2','2·n − 1','unterste Reihe',function(n){return 2*n-1;}]]},
+  ud:{e:[['c3','n','aufrechte Dreiecke der untersten Reihe',function(n){return n;}],['c4','n − 1','umgedrehte Dreiecke dazwischen',function(n){return n-1;}]]},
+  diff:{e:[['c1','(n − 1)²','alle Reihen darüber',function(n){return (n-1)*(n-1);}],['c2','2·n − 1','unterste Reihe',function(n){return 2*n-1;}]],
+     note:function(n){return 'alle Dreiecke minus die blauen: '+n*n+' − '+(n-1)*(n-1)+' = '+(2*n-1);}}}
+};
+var CNAME={c1:'blau',c2:'orange',c3:'grün',c4:'pink'};
+function legendHTML(m,n,mode){
+  var L=(LEG[m.id]||{})[mode];if(!L)return '';
+  var sum=0,h='<div class="legend"><span class="lt">Das zählt jede Farbe:</span>';
+  L.e.forEach(function(e){
+    var v=e[3](n);sum+=v;
+    h+='<div class="lg"><span class="sw" style="background:var(--'+e[0]+')" title="'+CNAME[e[0]]+'"></span><span><b>'+it(e[1])+(e[4]||e[1]===String(v)?'':' = '+v)+'</b> '+it(e[2])+'</span></div>';
+  });
+  if(L.note)h+='<div class="ln">'+L.note(n)+'</div>';
+  else if(L.e.length>1)h+='<div class="ln">zusammen '+L.e.map(function(e){return e[3](n);}).join(' + ')+' = '+sum+'</div>';
+  return h+'</div>';
+}
+
+/* ================= Term-Parser ================= */
+function TermError(m){this.message=m;}
+function parseTerm(keys,v){
+  var toks=[],i=0;
+  while(i<keys.length){
+    var k=keys[i];
+    if(/[0-9,]/.test(k)){
+      var s='';while(i<keys.length&&/[0-9,]/.test(keys[i]))s+=keys[i++];
+      if(!/^\d+(,\d+)?$/.test(s))throw new TermError('Die Zahl „'+s+'“ ist nicht vollständig.');
+      toks.push({t:'num',v:parseFloat(s.replace(',','.'))});continue;
+    }
+    toks.push({t:k===v?'var':k});i++;
+  }
+  if(!toks.length)throw new TermError('Tippe zuerst einen Term ein.');
+  var p=0;
+  function peek(){return toks[p];}
+  function expr(){
+    var a=[{s:1,n:term()}];
+    while(peek()&&(peek().t==='+'||peek().t==='−')){var op=toks[p++].t;a.push({s:op==='+'?1:-1,n:term()});}
+    return a.length===1?a[0].n:{t:'add',a:a};
+  }
+  function term(){
+    var f=factor();
+    for(;;){
+      var t=peek();if(!t)break;
+      if(t.t==='·'){p++;f={t:'mul',a:[f,factor()]};}
+      else if(t.t===':'){p++;f={t:'div',a:f,b:factor()};}
+      else if(t.t==='var'||t.t==='(')f={t:'mul',a:[f,power()]};
+      else if(t.t==='num')throw new TermError('Vor der Zahl '+fmt(t.v)+' fehlt ein Rechenzeichen.');
+      else break;
+    }
+    return f;
+  }
+  function factor(){
+    if(peek()&&peek().t==='−'){p++;return {t:'add',a:[{s:-1,n:factor()}]};}
+    return power();
+  }
+  function power(){
+    var f=primary();
+    while(peek()&&peek().t==='²'){p++;f={t:'mul',a:[f,f]};}
+    return f;
+  }
+  function primary(){
+    var t=toks[p++];
+    if(!t)throw new TermError('Der Term ist noch nicht fertig. Am Ende fehlt etwas.');
+    if(t.t==='num')return {t:'num',v:t.v};
+    if(t.t==='var')return {t:'var'};
+    if(t.t==='('){var f=expr();var c=toks[p++];if(!c||c.t!==')')throw new TermError('Es fehlt eine schließende Klammer.');return f;}
+    if(t.t===')')throw new TermError('Eine Klammer steht an der falschen Stelle.');
+    throw new TermError('Vor oder nach einem Rechenzeichen fehlt eine Zahl oder die Variable.');
+  }
+  var ast=expr();
+  if(p<toks.length)throw new TermError(toks[p].t===')'?'Es gibt eine schließende Klammer zu viel.':'Der Term ist so nicht lesbar.');
+  return {ast:ast,f:function(x){return ev(ast,x);},hasVar:toks.some(function(t){return t.t==='var';})};
+}
+function ev(n,x){
+  if(n.t==='num')return n.v;
+  if(n.t==='var')return x;
+  if(n.t==='add')return n.a.reduce(function(s,c){return s+c.s*ev(c.n,x);},0);
+  if(n.t==='mul')return n.a.reduce(function(s,c){return s*ev(c,x);},1);
+  return ev(n.a,x)/ev(n.b,x);
+}
+/* Kanonische Form: Summanden und Faktoren sortiert, damit 2·n+2 und 2+n·2 als dieselbe Zähl-Idee erkannt werden */
+function canon(n){
+  if(n.t==='num')return String(n.v);
+  if(n.t==='var')return 'v';
+  if(n.t==='mul'){
+    var fs=[];(function fl(m){m.a.forEach(function(c){if(c.t==='mul')fl(c);else fs.push(wrapC(c));});})(n);
+    return fs.sort().join('*');
+  }
+  if(n.t==='add'){
+    var ts=[];(function fl(m,sg){m.a.forEach(function(c){if(c.n.t==='add')fl(c.n,sg*c.s);else ts.push((sg*c.s>0?'+':'-')+canon(c.n));});})(n,1);
+    return ts.sort().join('');
+  }
+  return wrapC(n.a)+'/'+wrapC(n.b);
+}
+function wrapC(c){var s=canon(c);return (c.t==='add'||c.t==='div')?'('+s+')':s;}
+function termHTML(keys,v){
+  return keys.map(function(k){
+    if(k===v)return '<i>'+v+'</i>';
+    if(k==='+'||k==='−'||k==='·'||k===':')return ' '+k+' ';
+    return k;
+  }).join('');
+}
+function formHTML(str,v){return termHTML(keysOf(str),v);}
+function judgeTerm(st,keys,m){
+  var pr;
+  try{pr=parseTerm(keys,m.v);}catch(e){return {ok:false,syntax:true,msg:e.message};}
+  var xs=st.test||[1,2,3,4,5,6,7,8,9,10],f=pr.f,vv='<i>'+m.v+'</i>';
+  if(xs.every(function(x){return eq(f(x),st.target(x));})){
+    var c=canon(pr.ast),idx=-1;
+    (st.forms||[]).forEach(function(fm,i){if(idx<0&&canon(parseTerm(keysOf(fm[0]),m.v).ast)===c)idx=i;});
+    return {ok:true,f:f,form:idx};
+  }
+  var msg='Vergleiche in der Tabelle, was dein Term liefert und was gesucht ist.';
+  var d=xs.map(function(x){return f(x)-st.target(x);});
+  if(!pr.hasVar)msg='In deinem Term kommt '+vv+' nicht vor. Er liefert deshalb immer dieselbe Zahl.';
+  else{
+    var trap=(st.traps||[]).filter(function(t){return xs.every(function(x){return eq(f(x),t[0](x));});})[0];
+    if(trap)msg=it(trap[1]);
+    else if(st.inc&&xs.every(function(x){return eq(f(x),x+st.inc);}))
+      msg='„+ '+st.inc+'“ beschreibt nur den Schritt von einer Figur zur nächsten. Der Term soll die Anzahl direkt aus '+vv+' berechnen: Wie oft kommt die '+st.inc+' dazu?';
+    else if(d.every(function(q){return isFinite(q)&&eq(q,d[0]);}))
+      msg='Der Teil mit '+vv+' stimmt schon. Dein Term liefert aber immer '+fmt(Math.abs(d[0]))+(d[0]>0?' zu viel':' zu wenig')+'. Prüfe den festen Teil ohne '+vv+'.';
+    else if(eq(d[0],0))
+      msg='Für '+vv+' = '+fmt(xs[0])+' stimmt er, für '+vv+' = '+fmt(xs[1])+' aber nicht mehr. Ein Term muss für alle Einsetzungen passen.';
+  }
+  return {ok:false,msg:msg,f:f};
+}
+/* Rückmeldung zu einem richtigen Term: eigene Zähl-Idee kommentieren, weitere gleichwertige Terme nennen */
+function termOkHTML(st,m,keys,idx,revealed){
+  var forms=st.forms||[],nm=(st.name||'T')+'(<i>'+m.v+'</i>) = ',h;
+  if(revealed)h=st.sol?st.sol:'Eine Lösung ist <span class="tm">'+nm+formHTML(forms[0][0],m.v)+'</span>. '+it(forms[0][1]);
+  else{
+    h='Dein Term <span class="tm">'+nm+termHTML(keys,m.v)+'</span> stimmt. ';
+    if(idx>=0)h+='Deine Zähl-Idee: '+it(forms[idx][1]);
+    else if(forms.length)h+='Er liefert für jede Einsetzung denselben Wert wie <span class="tm">'+formHTML(forms[0][0],m.v)+'</span>, ist also gleichwertig dazu.';
+  }
+  var seen={},others=[];
+  if(idx>=0)seen[forms[idx][1]]=1;
+  forms.forEach(function(f,i){if(i!==idx&&!(revealed&&i===0)&&!f[3]&&!seen[f[1]]&&others.length<3){seen[f[1]]=1;others.push(f);}});
+  if(others.length)h+='<div class="alts"><b>'+(idx>=0||revealed?'Genauso richtig, nur anders gezählt:':'So kann man hier zählen:')+'</b><ul>'+
+    others.map(function(f){return '<li><span class="tm">'+formHTML(f[0],m.v)+'</span> '+it(f[1])+'</li>';}).join('')+'</ul></div>';
+  return h;
+}
+
+/* ================= Spielstand ================= */
+var S,R=null,view='home',help=false,resetAsk=false,app;
+function load(){
+  try{var r=JSON.parse(localStorage.getItem(KEY));if(r&&r.p)return r;}catch(e){}
+  return {p:{},streak:0,best:0,badges:[]};
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function totalStars(){return M.reduce(function(s,m){return s+((S.p[m.id]||{}).stars||0);},0);}
+function totalXP(){return M.reduce(function(s,m){return s+((S.p[m.id]||{}).xp||0);},0);}
+function isDone(id){return ((S.p[id]||{}).stars||0)>=1;}
+function doneCount(l){return M.filter(function(m){return (!l||m.lvl===l)&&isDone(m.id);}).length;}
+function lvlAll(l){return M.filter(function(m){return m.lvl===l;}).every(function(m){return isDone(m.id);});}
+function rank(xp){return xp>=780?'Diamant':xp>=540?'Gold':xp>=300?'Silber':xp>=100?'Bronze':'Start';}
+var BADGES=[
+  ['first','🚀','Erster Term','Erste Mission geschafft',function(){return doneCount()>=1;}],
+  ['s5','🔥','Im Lauf','5 Aufträge in Folge beim ersten Versuch',function(){return S.best>=5;}],
+  ['s10','⚡','Unaufhaltsam','10 Aufträge in Folge beim ersten Versuch',function(){return S.best>=10;}],
+  ['p3','🎯','Volltreffer','Eine Mission mit 3 Sternen',function(){return M.some(function(m){return (S.p[m.id]||{}).stars===3;});}],
+  ['inv','💡','Erfindergeist','Ein Muster erfunden und eines fortgesetzt',function(){return isDone('build')&&isDone('cont');}],
+  ['l1','🔍','Entdecker-Diplom','Level 1 komplett',function(){return lvlAll(1);}],
+  ['l2','🎨','Deuter-Diplom','Level 2 komplett',function(){return lvlAll(2);}],
+  ['l3','🧩','Knobel-Diplom','Level 3 komplett',function(){return lvlAll(3);}],
+  ['st','🌟','Sternenhimmel','30 Sterne gesammelt',function(){return totalStars()>=30;}]
+];
+function checkBadges(){
+  var nw=[];
+  BADGES.forEach(function(b){if(S.badges.indexOf(b[0])<0&&b[4]()){S.badges.push(b[0]);nw.push(b);}});
+  return nw;
+}
+function starsHTML(n){return '<b>'+'★'.repeat(n)+'</b>'+'★'.repeat(3-n);}
+function toast(t){
+  var old=document.querySelector('.toast');if(old)old.remove();
+  var d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=t;document.body.appendChild(d);
+  setTimeout(function(){d.remove();},2600);
+}
+
+/* ================= Darstellung ================= */
+function svgFig(m,n,mode,tight,label){
+  var f=m.fig(n,mode),b=f,tx=0,ty=0,p=18;
+  if(!tight){
+    b=m.fig(m.max,mode);
+    tx=m.anchor==='left'?b.x-f.x:(b.x+b.w/2)-(f.x+f.w/2);
+    ty=m.anchor==='top'?b.y-f.y:(b.y+b.h/2)-(f.y+f.h/2);
+  }
+  return '<svg viewBox="'+(b.x-p)+' '+(b.y-p)+' '+(b.w+2*p)+' '+(b.h+2*p)+'" role="img" aria-label="'+(label||'Figur')+'"><g transform="translate('+tx+' '+ty+')">'+f.s+'</g></svg>';
+}
+var THUMB={tab:[3],machine:[2],plus:[2,'A'],zaun:[3,'parts'],candle:[3],path:[3,'A'],climb:[8],stories:[2,'A'],field:[3,'sq'],grid:[2,'hv'],trick:[3,'T'],cont:[3,'A'],stage:[5],tritile:[3,'last']};
+function thumb(m){
+  if(!m.fig){
+    var o='';for(var j=0;j<3;j++)for(var i=0;i<4;i++)o+='<rect x="'+(i*16)+'" y="'+(j*16)+'" width="13" height="13" rx="3" fill="'+C('bg')+'" stroke="'+C('line')+'"/>'+(((i+j)%3===0||(i===1&&j===1))?'<circle cx="'+(i*16+6.5)+'" cy="'+(j*16+6.5)+'" r="4" fill="'+C('c1')+'"/>':'');
+    return '<svg viewBox="-6 -4 74 54" aria-hidden="true">'+o+'</svg>';
+  }
+  var t=THUMB[m.id]||[3];
+  return svgFig(m,t[0],t[1]||null,true,'');
+}
+function render(){if(view==='home')renderHome();else renderMission();}
+function nextOpen(){return M.filter(function(m){return !isDone(m.id);})[0];}
+function renderHome(){
+  var xp=totalXP(),st=totalStars(),nx=nextOpen();
+  var h='<header class="hero"><div>'+
+    '<h1>Termwerkstatt</h1>'+
+    '<p class="lead">Aus Bildern, Tabellen und Geschichten werden Terme. Finde die Regel, schreibe sie als Term auf und erkläre, was jede Zahl darin bedeutet.</p>'+
+    '<div class="stats"><span><b><span class="gold">★</span> '+st+'</b> von '+(M.length*3)+' Sternen</span>'+
+    '<span><b>'+xp+'</b> Punkte, Stufe '+rank(xp)+'</span>'+
+    '<span><b>🔥 '+S.streak+'</b> in Folge richtig</span></div>'+
+    (nx?'<div class="resume"><button class="btn primary" data-a="start" data-id="'+nx.id+'">'+(doneCount()?'Weitermachen':'Loslegen')+': '+nx.title+'</button></div>':'<div class="resume"><b>Alle Missionen geschafft. Hol dir noch fehlende Sterne!</b></div>')+
+    '</div>'+
+    '<div class="demo paper">'+svgFig(M[0],3,'A',true,'Drei Tische mit sechs orangen Stühlen an den langen Seiten und zwei blauen Stühlen an den Enden')+
+    '<div class="termbig">T(<i>n</i>) = '+k2('2 · <i>n</i>')+' + '+k1('2')+'</div>'+
+    '<div class="cap">2 Stühle je Tisch, dazu 2 an den Enden</div></div></header>';
+  LEVELS.forEach(function(L){
+    var ms=M.filter(function(m){return m.lvl===L.n;});
+    h+='<section class="lvl"><div class="lvl-head"><h2>Level '+L.n+': '+L.t+'</h2><p>'+L.d+'</p><span class="cnt">'+doneCount(L.n)+' von '+ms.length+'</span></div><div class="tiles">';
+    ms.forEach(function(m){
+      var p=S.p[m.id];
+      h+='<button class="tile'+(isDone(m.id)?' done':'')+'" data-a="start" data-id="'+m.id+'" aria-label="'+m.title+', '+m.kind+(p?', '+p.stars+' von 3 Sternen':'')+'">'+thumb(m)+
+        '<span><span class="tt">'+m.title+'</span><br><span class="tk">'+m.kind+'</span><br><span class="ts">'+starsHTML(p?p.stars:0)+'</span></span></button>';
+    });
+    h+='</div></section>';
+  });
+  h+='<section class="lvl"><div class="lvl-head"><h2>Abzeichen</h2><span class="cnt">'+S.badges.length+' von '+BADGES.length+'</span></div><div class="badges">';
+  BADGES.forEach(function(b){var on=S.badges.indexOf(b[0])>=0;h+='<div class="badge'+(on?' on':'')+'"><span class="be">'+b[1]+'</span><b>'+b[2]+'</b>'+b[3]+'</div>';});
+  h+='</div></section>';
+  h+='<div class="foot"><button class="btn small" data-a="help">Merkhilfe öffnen</button><span class="sp"></span>'+
+    (resetAsk?'<span>Wirklich alles löschen?</span><button class="btn small danger" data-a="resetyes">Ja, löschen</button><button class="btn small" data-a="resetno">Abbrechen</button>'
+      :'<button class="btn small" data-a="reset">Fortschritt löschen</button>')+'</div>';
+  if(help)h+=helpHTML();
+  app.innerHTML=h;
+}
+function helpHTML(){
+  return '<div class="ov" data-a="closehelp"><div class="sheet" role="dialog" aria-label="Merkhilfe" data-stop="1">'+
+    '<h2>Merkhilfe</h2>'+
+    '<h3>So stellst du einen Term auf</h3><ol>'+
+    '<li><b>Probieren:</b> Untersuche einige Beispiele und notiere die Werte in einer Tabelle.</li>'+
+    '<li><b>Regel suchen:</b> Was bleibt immer gleich? Was ändert sich mit jedem Schritt?</li>'+
+    '<li><b>Variable festlegen:</b> Wofür steht <i>n</i> oder <i>x</i>?</li>'+
+    '<li><b>Term aufschreiben</b> und an deinen Beispielen prüfen.</li></ol>'+
+    '<h3>So deutest du einen Term</h3>'+
+    '<p>Frage bei jeder Zahl und jedem Rechenzeichen: Was bedeutet das im Bild oder in der Situation? Beispiel: '+k2('2·<i>n</i>')+' + '+k1('2')+' bedeutet 2 Stühle für jeden der <i>n</i> Tische und 2 Stühle an den Enden.</p>'+
+    '<h3>Fachbegriffe</h3><ul><li>Summe: Summand + Summand</li><li>Differenz: Minuend − Subtrahend</li><li>Produkt: Faktor · Faktor</li><li>Quotient: Dividend : Divisor</li><li>Die Rechenart, die zuletzt ausgeführt wird, gibt dem Term seinen Namen.</li></ul>'+
+    '<h3>Eingabe</h3><ul><li>Statt 2·<i>n</i> darfst du kurz 2<i>n</i> schreiben.</li><li>² bedeutet „hoch 2“, der Doppelpunkt bedeutet „geteilt durch“.</li><li>Es gibt oft mehrere richtige Terme. Alle gleichwertigen Terme werden anerkannt und einzeln erklärt.</li></ul>'+
+    '<h3>Sterne und Punkte</h3><ul><li>Der erste Tipp bei jedem Auftrag ist gratis.</li><li>Mit höchstens einem Fehlversuch oder Zusatz-Tipp gibt es 3 Sterne.</li><li>Wenn alle Tipps verbraucht sind, kannst du dir die Lösung zeigen und erklären lassen. Dafür gibt es keine Punkte, und jede gezeigte Lösung kostet einen Stern.</li><li>Wer sich nur Lösungen zeigen lässt, bekommt keine Sterne. Die Mission gilt dann noch nicht als geschafft.</li><li>Du kannst jede Mission wiederholen. Es zählt dein bestes Ergebnis.</li></ul>'+
+    '<div class="actions"><button class="btn primary" data-a="closehelp" data-force="1">Schließen</button></div></div></div>';
+}
+/* Sterne: Fehlversuche und Zusatz-Tipps senken die Ausgangszahl, jede gezeigte Lösung kostet einen Stern.
+   Wer keinen einzigen Auftrag selbst löst, bekommt keinen Stern. */
+function curStars(final){var b=R.pen<=1?3:R.pen<=4?2:1,s=Math.max(0,b-R.rev);return final&&R.self===0?0:s;}
+function hudHTML(){return '<span class="fl2">🔥 '+S.streak+'</span><span class="st" aria-label="'+curStars()+' von 3 Sternen möglich">'+starsHTML(curStars())+'</span>';}
+function renderMission(){
+  var m=R.m,h='<div class="mbar"><button class="back" data-a="home" aria-label="Zur Übersicht">←</button>'+
+    '<div class="mt"><span>Level '+m.lvl+', '+m.kind+'</span><h1>'+m.title+'</h1></div><div class="hud" id="hud">'+hudHTML()+'</div></div>'+
+    '<div class="dots" aria-hidden="true">'+m.steps.map(function(_,i){return '<span class="'+(i<R.i||(i===R.i&&R.done)?'d':i===R.i?'c':'')+'"></span>';}).join('')+'</div>'+
+    '<div class="mission'+(m.build?' b':'')+'"><section class="lab paper" id="lab"></section><section class="task" id="task"></section></div>';
+  if(R.end)h+=endHTML();
+  if(help)h+=helpHTML();
+  app.innerHTML=h;renderLab();renderTask();
+}
+function renderLab(){
+  var m=R.m,el=document.getElementById('lab');if(!el)return;
+  var h='<p class="intro">'+m.intro+'</p>';
+  if(m.fig){
+    if(m.build)h+='<div class="split"><div>';
+    h+='<div class="figbox'+((m.build||m.low)?' low':'')+'" id="figbox"></div>'+
+      '<div class="ctrl"><button data-a="dec" aria-label="kleiner">−</button><div class="mid"><div class="nlab" id="nlab"></div>'+
+      '<input type="range" id="sl" min="'+m.min+'" max="'+m.max+'" step="'+(m.step||1)+'" value="'+R.n+'" aria-label="Regler für '+m.v+'"></div>'+
+      '<button data-a="inc" aria-label="größer">+</button></div><div id="legend"></div><div id="live"></div>';
+    if(m.build)h+='</div><div>';
+  }
+  if(m.build){
+    var B=m.build,cells=B.cols*B.rows;
+    h+='<div class="grids">';
+    B.figs.forEach(function(fn,g){
+      var cnt=R.grids[g].length,cls=R.gst[g]===1?' ok':R.gst[g]===2?' bad':'';
+      h+='<div class="gbox'+cls+'"><h3>Figur '+fn+'</h3><div class="cells" style="grid-template-columns:repeat('+B.cols+',var(--cs))">';
+      for(var c=0;c<cells;c++){var on=R.grids[g].indexOf(c)>=0;h+='<button class="cell'+(on?' on':'')+'" data-a="cell" data-g="'+g+'" data-c="'+c+'" aria-label="Feld '+(c+1)+' in Figur '+fn+'" aria-pressed="'+on+'"></button>';}
+      h+='</div><div class="gcount">'+pl(cnt,'Punkt','Punkte')+'</div></div>';
+    });
+    h+='</div><div class="actions"><button class="btn small" data-a="cleargrids">Alle Punkte entfernen</button></div>';
+    if(m.fig)h+='</div></div>';
+  }
+  el.innerHTML=h;
+  if(m.fig)updateFig();
+}
+function updateFig(){
+  var m=R.m,fb=document.getElementById('figbox');if(!fb)return;
+  fb.innerHTML=svgFig(m,R.n,R.mode,false,'Figur für '+m.v+' = '+fmt(R.n));
+  document.getElementById('nlab').innerHTML='<i>'+m.v+'</i> = '+fmt(R.n)+' <span style="font-weight:400;color:var(--muted)">('+m.unit(R.n)+')</span>';
+  document.getElementById('legend').innerHTML=legendHTML(m,R.n,R.mode);
+  var lv=document.getElementById('live');
+  lv.innerHTML=R.lives.length?'<div class="live"><span class="lt">Deine Terme rechnen mit:</span>'+R.lives.map(function(L){
+    return '<div>'+L.name+'('+fmt(R.n)+') = <b>'+fmt(L.f(R.n))+'</b> <span class="lf">'+L.name+'(<i>'+m.v+'</i>) = '+termHTML(L.keys,m.v)+'</span></div>';}).join('')+'</div>':'';
+}
+function addLive(name,keys,f){
+  R.lives=R.lives.filter(function(L){return L.name!==name;});R.lives.push({name:name,keys:keys,f:f});
+}
+function padHTML(kind,v){
+  var rows=kind==='term'?['7','8','9','(',')','4','5','6','+','−','1','2','3','·',':','0',',',v,'²','⌫']:['1','2','3','4','5','6','7','8','9','0','−',',','⌫'];
+  var names={'·':'mal',':':'geteilt','−':'minus','+':'plus','⌫':'löschen','²':'hoch 2',',':'Komma','(':'Klammer auf',')':'Klammer zu'};
+  return '<div class="pad '+kind+'">'+rows.map(function(k){
+    var cls=k==='⌫'?' del':k===v?' var':/[+−·:()²]/.test(k)?' op':'';
+    return '<button class="key'+cls+'" data-a="key" data-k="'+k+'" aria-label="'+(names[k]||k)+'">'+(k===v?'<i>'+k+'</i>':k)+'</button>';
+  }).join('')+'</div>';
+}
+function renderTask(){
+  var m=R.m,st=R.stp,el=document.getElementById('task');if(!el)return;
+  var last=R.i===m.steps.length-1,b='';
+  if(st.t==='nums'){
+    b='<div class="fields">'+st.fields.map(function(f,i){
+      var cls=R.fst[i]===1?' ok':R.fst[i]===2?' bad':'';if(!R.done&&i===R.focus)cls+=' f';
+      return '<button class="field'+cls+'" data-a="focus" data-i="'+i+'" aria-label="'+f[0]+': '+(R.fields[i]||'leer')+'"><span class="la">'+it(f[0])+'</span><span class="va">'+R.fields[i]+(f[2]&&R.fields[i]?'<span class="un">'+f[2]+'</span>':'')+'</span></button>';
+    }).join('')+'</div>'+(R.done?'':padHTML('num'));
+  }else if(st.t==='term'){
+    b='<div class="termline'+(R.done?' ok':'')+'" id="tl"><span class="nm">'+(st.name||'T')+'(<i>'+m.v+'</i>) =</span><span class="tv" id="tv">'+termHTML(R.keys,m.v)+'</span>'+(R.done?'':'<span class="car"></span>')+'</div>'+(R.done?'':padHTML('term',m.v));
+  }else if(st.t==='choice'){
+    b='<div class="opts">'+R.order.map(function(i){
+      var o=st.opts[i],cls=R.done&&o[1]?' ok':R.dead.indexOf(i)>=0?' dead':R.sel===i?' sel':'';
+      return '<button class="opt'+cls+'" data-a="sel" data-i="'+i+'"'+((R.done||R.dead.indexOf(i)>=0)?' disabled':'')+'><span class="rb"></span><span>'+it(o[0])+'</span></button>';
+    }).join('')+'</div>';
+  }else if(st.t==='pick'){
+    b='<div class="picks">'+R.order.map(function(i,pos){
+      var o=st.opts[i],cls=R.done&&o[1]?' ok':R.dead.indexOf(i)>=0?' dead':R.sel===i?' sel':'';
+      return '<button class="pick'+cls+'" data-a="sel" data-i="'+i+'" aria-label="Bild '+(pos+1)+'"'+((R.done||R.dead.indexOf(i)>=0)?' disabled':'')+'>'+svgFig(m,st.pn,o[0],true,'Bild '+(pos+1))+'</button>';
+    }).join('')+'</div>';
+  }else if(st.t==='build'){
+    b='<p class="note">Setze die Punkte im Baufeld. Unter der Figur siehst du, wie viele Punkte du schon gelegt hast.</p>';
+  }
+  var h='<div class="stepno">Auftrag '+(R.i+1)+' von '+m.steps.length+'</div><h2 class="q">'+st.q+'</h2>'+b;
+  var fb='<div aria-live="polite" id="fbwrap">'+(R.fb?'<div class="fb '+R.fb.k+'" id="fb">'+R.fb.h+'</div>':'')+'</div>';
+  var tips='';
+  for(var i=0;i<R.hl;i++){var hh=st.hints[i];tips+='<div class="tip"><b>Tipp '+(i+1)+'</b>'+(hh.h||hh)+'</div>';}
+  if(R.done){
+    h+=fb+'<div class="actions"><button class="btn primary" data-a="next">'+(last?'Mission abschließen':'Weiter zum nächsten Auftrag')+'</button></div>';
+  }else{
+    if(R.ask)h+=askHTML()+fb+tips;
+    else{
+      h+='<div class="actions">';
+      if(R.hl<st.hints.length)h+='<button class="btn" data-a="hint">'+(R.hl===0?'Tipp zeigen':'Noch ein Tipp')+'</button>';
+      else h+='<button class="btn" data-a="askreveal">Lösung zeigen</button>';
+      h+='<button class="btn primary" data-a="check">Prüfen</button></div>'+fb+tips;
+    }
+    if(R.i===0&&!R.fb&&!R.hl)h+='<p class="fine">Der erste Tipp bei jedem Auftrag ist gratis. Weitere Tipps und Fehlversuche können einen Stern kosten.</p>';
+  }
+  el.innerHTML=h;
+}
+function endHTML(){
+  var e=R.end,m=R.m,nx=M[M.indexOf(m)+1],zero=e.stars===0;
+  var head=e.stars===3?'Stark gelöst!':e.stars===2?'Gut gemacht!':e.stars===1?'Geschafft!':'Noch keine Sterne';
+  var why='';
+  if(zero)why='<p class="fine">'+(R.self===0?'Du hast dir bei allen Aufträgen die Lösung zeigen lassen.':'Du hast dir '+R.rev+'-mal die Lösung zeigen lassen.')+' Sterne gibt es für Aufträge, die du selbst löst. Die Erklärungen kennst du jetzt – versuche die Mission noch einmal ohne „Lösung zeigen“.</p>';
+  else if(e.stars<3)why='<p class="fine">Für 3 Sterne: höchstens ein Fehlversuch oder Zusatz-Tipp und keine gezeigte Lösung.'+(R.rev?' Du hast dir '+R.rev+'-mal die Lösung zeigen lassen, das hat '+(R.rev===1?'einen Stern':R.rev+' Sterne')+' gekostet.':'')+'</p>';
+  return '<div class="ov"><div class="sheet end" role="dialog" aria-label="Mission beendet">'+
+    '<div class="bigst" aria-label="'+e.stars+' von 3 Sternen">'+starsHTML(e.stars)+'</div><h2>'+head+'</h2>'+
+    '<p style="margin-top:6px"><b>+'+e.xp+' Punkte</b>'+(e.better?'':' (dein Bestwert bleibt bei '+S.p[m.id].xp+')')+'</p>'+why+
+    '<div class="learn"><b>Das nimmst du mit:</b> '+m.learn+'</div>'+
+    (e.badges.length?'<div class="newb">Neues Abzeichen: '+e.badges.map(function(b){return b[1]+' '+b[2];}).join(', ')+'</div>':'')+
+    '<div class="actions"><button class="btn" data-a="home">Zur Übersicht</button><button class="btn'+(zero?' primary':'')+'" data-a="retry">Noch einmal</button>'+
+    (nx?'<button class="btn'+(zero?'':' primary')+'" data-a="start" data-id="'+nx.id+'">Nächste Mission</button>':'')+'</div></div></div>';
+}
+
+/* ================= Ablauf ================= */
+function start(id){
+  var m=M.filter(function(x){return x.id===id;})[0];
+  R={m:m,i:0,pen:0,xp:0,rev:0,self:0,ask:false,n:m.start!==undefined?m.start:m.min,mode:null,lives:[],lastForm:-1,end:null,
+     grids:m.build?m.build.figs.map(function(){return [];}):null,gst:m.build?m.build.figs.map(function(){return 0;}):[]};
+  initStep();view='mission';render();window.scrollTo(0,0);
+}
+function initStep(){
+  var st=R.m.steps[R.i];
+  if(st.alt&&R.lastForm===st.alt.form){var a={},k;for(k in st)a[k]=st[k];for(k in st.alt)a[k]=st.alt[k];st=a;}
+  R.stp=st;
+  R.done=false;R.tries=0;R.hl=0;R.hpen=0;R.fb=null;R.ask=false;R.mode=st.mode||null;
+  if(st.t==='nums'){R.fields=st.fields.map(function(){return '';});R.fst=st.fields.map(function(){return 0;});R.focus=0;}
+  if(st.t==='term')R.keys=[];
+  if(st.t==='choice'||st.t==='pick'){R.order=shuffle(st.opts.map(function(_,i){return i;}));R.sel=null;R.dead=[];}
+}
+function fail(msg){
+  R.tries++;R.pen++;S.streak=0;R.ask=false;save();R.fb={k:'bad',h:msg};
+  renderTask();document.getElementById('hud').innerHTML=hudHTML();showFb();
+}
+function info(msg){R.fb={k:'info',h:msg};renderTask();showFb();}
+function showFb(){var f=document.getElementById('fb');if(f&&f.scrollIntoView)f.scrollIntoView({block:'nearest',behavior:'smooth'});}
+function solved(body,revealed){
+  var st=R.stp,pts=revealed?0:(R.tries===0?10:R.tries===1?6:3);
+  R.xp+=pts;R.done=true;
+  R.ask=false;
+  if(revealed){S.streak=0;R.rev++;R.pen-=R.hpen;}
+  else{R.self++;if(R.tries===0){S.streak++;if(S.streak>S.best)S.best=S.streak;}}
+  if(st.okMode&&!R.modeSet)R.mode=st.okMode;
+  R.modeSet=false;
+  R.fb={k:revealed?'info':'ok',h:(revealed?'<span class="pts no">0 Punkte, 1 Stern weniger</span><b>Lösung.</b> ':'<span class="pts">+'+pts+'</span><b>Richtig!</b> ')+(body||'')+' '+(st.why||'')};
+  save();
+  var nb=checkBadges();if(nb.length){save();toast('Neues Abzeichen: '+nb[0][1]+' '+nb[0][2]);R.pendingBadges=(R.pendingBadges||[]).concat(nb);}
+  renderMission();showFb();
+}
+function termSolved(st,keys,f,idx,revealed){
+  var m=R.m;
+  R.keys=keys;R.lastForm=idx;
+  (st.lives||[]).forEach(function(L){var k=keysOf(L[1]);addLive(L[0],k,parseTerm(k,m.v).f);});
+  addLive(st.name||'T',keys.slice(),f);
+  var forms=st.forms||[],own=idx>=0&&!revealed?forms[idx]:null,note='';
+  if(own){
+    if(own[2]){R.mode=own[2];R.modeSet=true;note=' Das Bild ist jetzt nach deiner Zähl-Idee gefärbt. Die Legende darunter zeigt, was jede Farbe zählt.';}
+  }else if(forms.length&&forms[0][2]){
+    R.mode=forms[0][2];R.modeSet=true;
+    note=' Das Bild zeigt jetzt die Zähl-Idee zum Term <span class="tm">'+formHTML(forms[0][0],m.v)+'</span>. Die Legende darunter zeigt, was jede Farbe zählt.';
+  }
+  solved(termOkHTML(st,m,keys,idx,revealed)+note,revealed);
+}
+function check(){
+  var m=R.m,st=R.stp;if(R.done)return;
+  if(st.t==='nums'){
+    if(R.fields.some(function(v,i){return v===''&&R.fst[i]!==1;}))return info('Fülle zuerst alle Felder aus.');
+    var all=true,msgs=[];
+    st.fields.forEach(function(f,i){
+      var v=num(R.fields[i]);
+      if(v!==null&&eq(v,f[1]))R.fst[i]=1;
+      else{R.fst[i]=2;all=false;
+        var t=(f[3]||{})[R.fields[i]];
+        msgs.push('<li><b>'+it(f[0])+':</b> Du hast '+R.fields[i]+(f[2]?' '+f[2]:'')+' eingegeben. '+it(t||'Dieser Wert passt noch nicht. Rechne oder zähle hier noch einmal nach.')+'</li>');}
+    });
+    if(all)return solved();
+    R.focus=R.fst.indexOf(2);
+    return fail('<ul class="plain">'+msgs.join('')+'</ul>');
+  }
+  if(st.t==='term'){
+    if(!R.keys.length)return info('Tippe zuerst deinen Term ein.');
+    var j=judgeTerm(st,R.keys,m);
+    if(j.syntax)return info(j.msg);
+    if(j.ok)return termSolved(st,R.keys.slice(),j.f,j.form,false);
+    var xs=st.show||[0,1,2,3].map(function(k){return m.min+k;});
+    var tb='<div class="scroll"><table class="cmp"><tr><th><i>'+m.v+'</i></th>'+xs.map(function(x){return '<td>'+fmt(x)+'</td>';}).join('')+'</tr>'+
+      '<tr><th>gesucht</th>'+xs.map(function(x){return '<td>'+fmt(st.target(x))+'</td>';}).join('')+'</tr>'+
+      '<tr><th>dein Term</th>'+xs.map(function(x){var a=j.f(x);return '<td class="'+(eq(a,st.target(x))?'tok':'tbad')+'">'+fmt(a)+'</td>';}).join('')+'</tr></table></div>';
+    return fail('Dein Term <span class="tm">'+termHTML(R.keys,m.v)+'</span> passt noch nicht. '+j.msg+tb);
+  }
+  if(st.t==='choice'||st.t==='pick'){
+    if(R.sel===null)return info(st.t==='pick'?'Tippe zuerst ein Bild an.':'Wähle zuerst eine Antwort aus.');
+    var o=st.opts[R.sel];
+    if(o[1])return solved();
+    R.dead.push(R.sel);R.sel=null;
+    return fail((st.t==='pick'?'Dieses Bild passt nicht. ':'Diese Antwort passt nicht. ')+it(o[2]||''));
+  }
+  if(st.t==='build'){
+    var ok=true,bad=[],figs=m.build.figs;
+    figs.forEach(function(fn,g){
+      var c=R.grids[g].length,t=st.target(fn);
+      if(c===t)R.gst[g]=1;
+      else{R.gst[g]=2;ok=false;
+        bad.push('<li><b>Figur '+fn+':</b> Du hast '+pl(c,'Punkt','Punkte')+' gelegt. '+(st.known?'Der Term verlangt T('+fn+') = '+t+'.':it((st.traps||{})[String(c)]||'Schau auf die Zuwächse von Figur zu Figur: erst + 3, dann + 5. Wie geht es weiter?'))+'</li>');}
+    });
+    renderLab();
+    if(ok)return solved(st.comment?st.comment(R.grids):'');
+    return fail('<ul class="plain">'+bad.join('')+'</ul>');
+  }
+}
+function askReveal(){
+  if(R.done)return;R.ask=true;renderTask();
+  var a=document.getElementById('ask');if(a&&a.scrollIntoView)a.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function askHTML(){
+  var st=R.stp,m=R.m,tips=[];
+  if(R.tries===0)tips.push('<b>Gib erst eine eigene Antwort ab.</b> Ein Fehlversuch kostet viel weniger als die Lösung, und die Rückmeldung sagt dir genau, was noch nicht passt.');
+  if(st.t==='term'){
+    tips.push('Lege auf Papier eine kleine Tabelle an, zum Beispiel für 1, 2 und 3. Was bleibt gleich, was kommt dazu?');
+    tips.push('Tippe einen Term ein, auch wenn du unsicher bist: Die Vergleichstabelle zeigt dir, für welche Werte er schon passt.');
+  }else if(st.t==='nums'){
+    tips.push(m.fig?'Stelle den Regler auf kleine Werte und zähle oder lies im Bild nach. Suche dann die Regel für große Werte.':'Setze die Zahl Schritt für Schritt ein: erst die Klammer, dann Punktrechnung, dann Strichrechnung.');
+  }else if(st.t==='choice'){
+    tips.push('Prüfe jede Antwort mit einem Zahlenbeispiel und schließe aus, was sicher nicht stimmt.');
+  }else if(st.t==='pick'){
+    tips.push('Zähle in jedem Bild, wie viele Teile jede Farbe hat, und vergleiche mit den Teilen des Terms.');
+  }else if(st.t==='build'){
+    tips.push('Vergleiche die Punktzahl unter der Figur mit dem Wert, den du erwartest. Lege zuerst den Teil, der in jeder Figur gleich bleibt.');
+  }
+  tips.push('Lies die Tipps weiter unten noch einmal in Ruhe oder öffne die Merkhilfe.');
+  tips.push('Frage deine Nachbarin oder deinen Nachbarn nach einer Idee, nicht nach dem Ergebnis.');
+  return '<div class="ask" id="ask" role="alertdialog" aria-label="Lösung wirklich zeigen?"><h3>Bist du dir sicher?</h3>'+
+    '<p>Für eine gezeigte Lösung gibt es <b>keine Punkte</b>, und die Mission bringt <b>einen Stern weniger</b>. Wer sich nur Lösungen zeigen lässt, bekommt gar keine Sterne.</p>'+
+    '<p class="asklt">Das kannst du vorher noch versuchen:</p><ul class="plain">'+tips.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul>'+
+    '<div class="actions"><button class="btn primary" data-a="askno">Ich versuche es noch einmal</button><button class="btn" data-a="help">Merkhilfe öffnen</button><button class="btn danger" data-a="reveal">Lösung trotzdem zeigen</button></div></div>';
+}
+function reveal(){
+  var m=R.m,st=R.stp;if(R.done)return;
+  if(st.t==='nums'){R.fields=st.fields.map(function(f){return fmt(f[1]);});R.fst=st.fields.map(function(){return 1;});return solved('',true);}
+  if(st.t==='term'){var k=keysOf(st.forms[0][0]);return termSolved(st,k,parseTerm(k,m.v).f,0,true);}
+  if(st.t==='choice'||st.t==='pick'){
+    var o=st.opts.filter(function(q){return q[1];})[0];
+    return solved(st.t==='choice'?'Richtig ist: „'+it(o[0])+'“ ':'Das passende Bild ist grün umrandet. ',true);
+  }
+  if(st.t==='build'){
+    m.build.figs.forEach(function(fn,g){R.grids[g]=st.sample(g);R.gst[g]=1;});
+    return solved('Im Baufeld siehst du ein mögliches Muster. '+it(st.hints[st.hints.length-1].replace(/^Eine Idee: /,'')),true);
+  }
+}
+function hint(){
+  var st=R.stp;if(R.done||R.hl>=st.hints.length)return;
+  var h=st.hints[R.hl];R.hl++;
+  if(R.hl>1){R.pen++;R.hpen++;}
+  if(h.mode){R.mode=h.mode;updateFig();}
+  renderTask();document.getElementById('hud').innerHTML=hudHTML();
+  var tips=document.querySelectorAll('.tip');if(tips.length&&tips[tips.length-1].scrollIntoView)tips[tips.length-1].scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function next(){
+  if(!R.done)return;
+  if(R.i<R.m.steps.length-1){R.i++;initStep();renderMission();window.scrollTo(0,0);return;}
+  var stars=curStars(true),xp=R.xp+stars*5,prev=S.p[R.m.id]||{stars:0,xp:0};
+  S.p[R.m.id]={stars:Math.max(prev.stars,stars),xp:Math.max(prev.xp,xp)};
+  var nb=(R.pendingBadges||[]).concat(checkBadges());save();
+  R.end={stars:stars,xp:xp,better:xp>=prev.xp,badges:nb};
+  renderMission();
+}
+function pressKey(k){
+  if(!R||view!=='mission'||R.done||R.end)return;
+  var st=R.stp;
+  if(R.ask){R.ask=false;renderTask();}
+  if(st.t==='nums'){
+    var i=R.focus;if(i<0||R.fst[i]===1)return;
+    var cur=R.fields[i];
+    if(k==='⌫')cur=cur.slice(0,-1);
+    else if(k==='−'){if(cur==='')cur='−';else return;}
+    else if(/^[0-9]$/.test(k)&&cur.length<7)cur+=k;
+    else if(k===','&&/\d$/.test(cur)&&cur.indexOf(',')<0)cur+=k;
+    else return;
+    R.fields[i]=cur;
+    if(R.fst[i]===2)R.fst[i]=0;
+    renderTask();
+  }else if(st.t==='term'){
+    if(k==='⌫')R.keys.pop();
+    else if(R.keys.length<32)R.keys.push(k);
+    document.getElementById('tv').innerHTML=termHTML(R.keys,R.m.v);
+  }
+}
+function setN(v){
+  var m=R.m;v=Math.min(m.max,Math.max(m.min,v));R.n=v;
+  var sl=document.getElementById('sl');if(sl)sl.value=v;updateFig();
+}
+
+/* ================= Ereignisse ================= */
+function onClick(ev){
+  var t=ev.target.closest('[data-a]');if(!t)return;
+  var a=t.dataset.a;
+  if(a==='closehelp'){if(ev.target.closest('[data-stop]')&&!ev.target.closest('[data-force]'))return;help=false;render();return;}
+  if(a==='start'){help=false;start(t.dataset.id);}
+  else if(a==='home'){view='home';R=null;render();window.scrollTo(0,0);}
+  else if(a==='retry')start(R.m.id);
+  else if(a==='help'){help=true;render();}
+  else if(a==='reset'){resetAsk=true;render();}
+  else if(a==='resetno'){resetAsk=false;render();}
+  else if(a==='resetyes'){resetAsk=false;S={p:{},streak:0,best:0,badges:[]};save();render();toast('Fortschritt gelöscht');}
+  else if(a==='key')pressKey(t.dataset.k);
+  else if(a==='focus'){var i=+t.dataset.i;if(!R.done&&R.fst[i]!==1){R.focus=i;renderTask();}}
+  else if(a==='sel'){R.sel=+t.dataset.i;R.fb=null;R.ask=false;renderTask();}
+  else if(a==='check')check();
+  else if(a==='hint')hint();
+  else if(a==='reveal')reveal();
+  else if(a==='askreveal')askReveal();
+  else if(a==='askno'){R.ask=false;renderTask();}
+  else if(a==='next')next();
+  else if(a==='inc')setN(R.n+(R.m.step||1));
+  else if(a==='dec')setN(R.n-(R.m.step||1));
+  else if(a==='cell'){
+    if(R.done&&R.stp.t==='build')return;
+    var g=+t.dataset.g,c=+t.dataset.c,ix=R.grids[g].indexOf(c);
+    if(ix>=0)R.grids[g].splice(ix,1);else R.grids[g].push(c);
+    R.gst[g]=0;renderLab();
+  }
+  else if(a==='cleargrids'){R.grids=R.grids.map(function(){return [];});R.gst=R.gst.map(function(){return 0;});renderLab();}
+}
+function onKey(ev){
+  if(!R||view!=='mission'||R.end||help)return;
+  if(ev.ctrlKey||ev.metaKey||ev.altKey)return;
+  var st=R.stp,k=ev.key;
+  if(k==='Enter'){if(document.activeElement&&document.activeElement.tagName==='BUTTON')return;ev.preventDefault();if(R.done)next();else check();return;}
+  if(st.t!=='nums'&&st.t!=='term')return;
+  var map={'*':'·','/':':','-':'−','.':',','^':'²','Backspace':'⌫'};
+  if(k.toLowerCase()===R.m.v)k=R.m.v;else if(map[k])k=map[k];
+  if(/^[0-9,+−·:()²⌫]$/.test(k)||k===R.m.v){ev.preventDefault();pressKey(k);}
+}
+if(typeof document!=='undefined'){
+  app=document.getElementById('app');
+  S=load();
+  document.addEventListener('click',onClick);
+  document.addEventListener('keydown',onKey);
+  document.addEventListener('input',function(ev){if(ev.target.id==='sl'&&R){R.n=parseFloat(ev.target.value);updateFig();}});
+  render();
+}
+</script>
+</body>
+</html>
+
+</body></html>
