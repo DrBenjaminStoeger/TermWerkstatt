@@ -73,6 +73,8 @@ p{margin:0}
 .demo .termbig{font-size:1.5rem;margin-top:10px;text-align:center}
 .demo .cap{font-size:.85rem;color:var(--muted);text-align:center;margin-top:6px}
 .resume{margin-top:18px}
+.store{margin-top:12px;font-size:.88rem;color:var(--muted);max-width:40em}
+.store.warn{color:var(--bad);background:var(--bad-bg);border-radius:10px;padding:8px 12px;margin:0 0 12px}
 .lvl{margin-top:26px}
 .lvl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-bottom:2px solid var(--ink);padding-bottom:6px}
 .lvl-head h2{font-size:1.45rem}
@@ -1265,6 +1267,37 @@ function load(){
   return {p:{},streak:0,best:0,badges:[]};
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+/* Prüft einmal, ob dieser Browser überhaupt speichern darf (privates Fenster, gesperrte Website-Daten). */
+var CAN_STORE=(function(){try{localStorage.setItem(KEY+'-t','1');var ok=localStorage.getItem(KEY+'-t')==='1';localStorage.removeItem(KEY+'-t');return ok;}catch(e){return false;}})();
+/* Laufende Mission: wird bei jeder Änderung gesichert, damit ein Neuladen genau dort weitermacht. */
+var RUN_FIELDS=['i','pen','xp','rev','self','n','mode','lastForm','grids','gst','done','tries','hl','hpen','fb','fields','fst','focus','keys','order','sel','dead'];
+function saveRun(){
+  if(!R||R.end)return;
+  var o={id:R.m.id,lives:R.lives.map(function(L){return {name:L.name,keys:L.keys};}),pb:(R.pendingBadges||[]).map(function(b){return b[0];})};
+  RUN_FIELDS.forEach(function(k){if(R[k]!==undefined)o[k]=R[k];});
+  try{localStorage.setItem(KEY+'-run',JSON.stringify(o));}catch(e){}
+}
+function loadRun(){
+  try{var o=JSON.parse(localStorage.getItem(KEY+'-run'));
+    var m=o&&M.filter(function(x){return x.id===o.id;})[0];
+    if(m&&typeof o.i==='number'&&o.i<m.steps.length)return o;}catch(e){}
+  return null;
+}
+function setView(v){try{localStorage.setItem(KEY+'-v',v);}catch(e){}}
+function lastView(){try{return localStorage.getItem(KEY+'-v');}catch(e){return null;}}
+function clearRun(){try{localStorage.removeItem(KEY+'-run');}catch(e){}}
+function resume(o){
+  var m=M.filter(function(x){return x.id===o.id;})[0];
+  try{
+    R={m:m,ask:false,end:null,lives:[],modeSet:false};
+    RUN_FIELDS.forEach(function(k){if(o[k]!==undefined)R[k]=o[k];});
+    R.stp=stepOf();
+    R.lives=(o.lives||[]).map(function(L){return {name:L.name,keys:L.keys,f:parseTerm(L.keys,m.v).f};});
+    R.pendingBadges=(o.pb||[]).map(function(id){return BADGES.filter(function(b){return b[0]===id;})[0];}).filter(Boolean);
+    if(m.build&&(!R.grids||R.grids.length!==m.build.figs.length)){R.grids=m.build.figs.map(function(){return [];});R.gst=m.build.figs.map(function(){return 0;});}
+  }catch(e){clearRun();start(m.id,true);return;}
+  view='mission';setView('mission');render();window.scrollTo(0,0);
+}
 function totalStars(){return M.reduce(function(s,m){return s+((S.p[m.id]||{}).stars||0);},0);}
 function totalXP(){return M.reduce(function(s,m){return s+((S.p[m.id]||{}).xp||0);},0);}
 function isDone(id){return ((S.p[id]||{}).stars||0)>=1;}
@@ -1316,14 +1349,16 @@ function thumb(m){
 function render(){if(view==='home')renderHome();else renderMission();}
 function nextOpen(){return M.filter(function(m){return !isDone(m.id);})[0];}
 function renderHome(){
-  var xp=totalXP(),st=totalStars(),nx=nextOpen();
+  var xp=totalXP(),st=totalStars(),nx=nextOpen(),run=loadRun(),rm=run&&M.filter(function(x){return x.id===run.id;})[0];
   var h='<header class="hero"><div>'+
     '<h1>Termwerkstatt</h1>'+
     '<p class="lead">Aus Bildern, Tabellen und Geschichten werden Terme. Finde die Regel, schreibe sie als Term auf und erkläre, was jede Zahl darin bedeutet.</p>'+
     '<div class="stats"><span><b><span class="gold">★</span> '+st+'</b> von '+(M.length*3)+' Sternen</span>'+
     '<span><b>'+xp+'</b> Punkte, Stufe '+rank(xp)+'</span>'+
     '<span><b>🔥 '+S.streak+'</b> in Folge richtig</span></div>'+
-    (nx?'<div class="resume"><button class="btn primary" data-a="start" data-id="'+nx.id+'">'+(doneCount()?'Weitermachen':'Loslegen')+': '+nx.title+'</button></div>':'<div class="resume"><b>Alle Missionen geschafft. Hol dir noch fehlende Sterne!</b></div>')+
+    (rm?'<div class="resume"><button class="btn primary" data-a="resume">Weitermachen: '+rm.title+' (Auftrag '+(run.i+1)+' von '+rm.steps.length+')</button></div>':
+     nx?'<div class="resume"><button class="btn primary" data-a="start" data-id="'+nx.id+'">'+(doneCount()?'Weitermachen':'Loslegen')+': '+nx.title+'</button></div>':'<div class="resume"><b>Alle Missionen geschafft. Hol dir noch fehlende Sterne!</b></div>')+
+    storeNote()+
     '</div>'+
     '<div class="demo paper">'+svgFig(M[0],3,'A',true,'Drei Tische mit sechs orangen Stühlen an den langen Seiten und zwei blauen Stühlen an den Enden')+
     '<div class="termbig">T(<i>n</i>) = '+k2('2 · <i>n</i>')+' + '+k1('2')+'</div>'+
@@ -1347,6 +1382,10 @@ function renderHome(){
   if(help)h+=helpHTML();
   app.innerHTML=h;
 }
+function storeNote(){
+  return CAN_STORE?'<p class="store">Dein Fortschritt wird auf diesem Gerät in diesem Browser gespeichert, auch mitten in einer Mission. Nach dem Neuladen geht es dort weiter.</p>'
+    :'<p class="store warn"><b>Achtung:</b> Dieser Browser darf hier nichts speichern, zum Beispiel in einem privaten Fenster. Wenn du die Seite neu lädst, beginnst du von vorn. Öffne die Seite in einem normalen Fenster.</p>';
+}
 function helpHTML(){
   return '<div class="ov" data-a="closehelp"><div class="sheet" role="dialog" aria-label="Merkhilfe" data-stop="1">'+
     '<h2>Merkhilfe</h2>'+
@@ -1359,6 +1398,7 @@ function helpHTML(){
     '<p>Frage bei jeder Zahl und jedem Rechenzeichen: Was bedeutet das im Bild oder in der Situation? Beispiel: '+k2('2·<i>n</i>')+' + '+k1('2')+' bedeutet 2 Stühle für jeden der <i>n</i> Tische und 2 Stühle an den Enden.</p>'+
     '<h3>Fachbegriffe</h3><ul><li>Summe: Summand + Summand</li><li>Differenz: Minuend − Subtrahend</li><li>Produkt: Faktor · Faktor</li><li>Quotient: Dividend : Divisor</li><li>Die Rechenart, die zuletzt ausgeführt wird, gibt dem Term seinen Namen.</li></ul>'+
     '<h3>Eingabe</h3><ul><li>Statt 2·<i>n</i> darfst du kurz 2<i>n</i> schreiben.</li><li>² bedeutet „hoch 2“, der Doppelpunkt bedeutet „geteilt durch“.</li><li>Es gibt oft mehrere richtige Terme. Alle gleichwertigen Terme werden anerkannt und einzeln erklärt.</li></ul>'+
+    '<h3>Speichern</h3><ul><li>Dein Fortschritt bleibt auf diesem Gerät gespeichert, auch wenn du die Seite neu lädst. Mitten in einer Mission geht es beim gleichen Auftrag weiter.</li><li>Auf einem anderen Gerät oder in einem privaten Fenster beginnst du neu.</li></ul>'+
     '<h3>Sterne und Punkte</h3><ul><li>Der erste Tipp bei jedem Auftrag ist gratis.</li><li>Mit höchstens einem Fehlversuch oder Zusatz-Tipp gibt es 3 Sterne.</li><li>Wenn alle Tipps verbraucht sind, kannst du dir die Lösung zeigen und erklären lassen. Dafür gibt es keine Punkte, und jede gezeigte Lösung kostet einen Stern.</li><li>Wer sich nur Lösungen zeigen lässt, bekommt keine Sterne. Die Mission gilt dann noch nicht als geschafft.</li><li>Du kannst jede Mission wiederholen. Es zählt dein bestes Ergebnis.</li></ul>'+
     '<div class="actions"><button class="btn primary" data-a="closehelp" data-force="1">Schließen</button></div></div></div>';
 }
@@ -1368,7 +1408,7 @@ function curStars(final){var b=R.pen<=1?3:R.pen<=4?2:1,s=Math.max(0,b-R.rev);ret
 function hudHTML(){return '<span class="fl2">🔥 '+S.streak+'</span><span class="st" aria-label="'+curStars()+' von 3 Sternen möglich">'+starsHTML(curStars())+'</span>';}
 function renderMission(){
   var m=R.m,h='<div class="mbar"><button class="back" data-a="home" aria-label="Zur Übersicht">←</button>'+
-    '<div class="mt"><span>Level '+m.lvl+', '+m.kind+'</span><h1>'+m.title+'</h1></div><div class="hud" id="hud">'+hudHTML()+'</div></div>'+
+    '<div class="mt"><span>Level '+m.lvl+', '+m.kind+'</span><h1>'+m.title+'</h1></div><div class="hud" id="hud">'+hudHTML()+'</div></div>'+(CAN_STORE?'':storeNote())+
     '<div class="dots" aria-hidden="true">'+m.steps.map(function(_,i){return '<span class="'+(i<R.i||(i===R.i&&R.done)?'d':i===R.i?'c':'')+'"></span>';}).join('')+'</div>'+
     '<div class="mission'+(m.build?' b':'')+'"><section class="lab paper" id="lab"></section><section class="task" id="task"></section></div>';
   if(R.end)h+=endHTML();
@@ -1398,7 +1438,7 @@ function renderLab(){
     h+='</div><div class="actions"><button class="btn small" data-a="cleargrids">Alle Punkte entfernen</button></div>';
     if(m.fig)h+='</div></div>';
   }
-  el.innerHTML=h;
+  el.innerHTML=h;saveRun();
   if(m.fig)updateFig();
 }
 function updateFig(){
@@ -1406,6 +1446,7 @@ function updateFig(){
   fb.innerHTML=svgFig(m,R.n,R.mode,false,'Figur für '+m.v+' = '+fmt(R.n));
   document.getElementById('nlab').innerHTML='<i>'+m.v+'</i> = '+fmt(R.n)+' <span style="font-weight:400;color:var(--muted)">('+m.unit(R.n)+')</span>';
   document.getElementById('legend').innerHTML=legendHTML(m,R.n,R.mode);
+  saveRun();
   var lv=document.getElementById('live');
   lv.innerHTML=R.lives.length?'<div class="live"><span class="lt">Deine Terme rechnen mit:</span>'+R.lives.map(function(L){
     return '<div>'+L.name+'('+fmt(R.n)+') = <b>'+fmt(L.f(R.n))+'</b> <span class="lf">'+L.name+'(<i>'+m.v+'</i>) = '+termHTML(L.keys,m.v)+'</span></div>';}).join('')+'</div>':'';
@@ -1461,6 +1502,7 @@ function renderTask(){
     if(R.i===0&&!R.fb&&!R.hl)h+='<p class="fine">Der erste Tipp bei jedem Auftrag ist gratis. Weitere Tipps und Fehlversuche können einen Stern kosten.</p>';
   }
   el.innerHTML=h;
+  saveRun();
 }
 function endHTML(){
   var e=R.end,m=R.m,nx=M[M.indexOf(m)+1],zero=e.stars===0;
@@ -1478,15 +1520,21 @@ function endHTML(){
 }
 
 /* ================= Ablauf ================= */
-function start(id){
+function start(id,fresh){
+  var run=loadRun();
+  if(!fresh&&run&&run.id===id){resume(run);return;}
   var m=M.filter(function(x){return x.id===id;})[0];
   R={m:m,i:0,pen:0,xp:0,rev:0,self:0,ask:false,n:m.start!==undefined?m.start:m.min,mode:null,lives:[],lastForm:-1,end:null,
      grids:m.build?m.build.figs.map(function(){return [];}):null,gst:m.build?m.build.figs.map(function(){return 0;}):[]};
-  initStep();view='mission';render();window.scrollTo(0,0);
+  initStep();view='mission';setView('mission');render();window.scrollTo(0,0);
 }
-function initStep(){
+function stepOf(){
   var st=R.m.steps[R.i];
   if(st.alt&&R.lastForm===st.alt.form){var a={},k;for(k in st)a[k]=st[k];for(k in st.alt)a[k]=st.alt[k];st=a;}
+  return st;
+}
+function initStep(){
+  var st=stepOf();
   R.stp=st;
   R.done=false;R.tries=0;R.hl=0;R.hpen=0;R.fb=null;R.ask=false;R.mode=st.mode||null;
   if(st.t==='nums'){R.fields=st.fields.map(function(){return '';});R.fst=st.fields.map(function(){return 0;});R.focus=0;}
@@ -1627,6 +1675,7 @@ function next(){
   S.p[R.m.id]={stars:Math.max(prev.stars,stars),xp:Math.max(prev.xp,xp)};
   var nb=(R.pendingBadges||[]).concat(checkBadges());save();
   R.end={stars:stars,xp:xp,better:xp>=prev.xp,badges:nb};
+  clearRun();
   renderMission();
 }
 function pressKey(k){
@@ -1661,12 +1710,13 @@ function onClick(ev){
   var a=t.dataset.a;
   if(a==='closehelp'){if(ev.target.closest('[data-stop]')&&!ev.target.closest('[data-force]'))return;help=false;render();return;}
   if(a==='start'){help=false;start(t.dataset.id);}
-  else if(a==='home'){view='home';R=null;render();window.scrollTo(0,0);}
-  else if(a==='retry')start(R.m.id);
+  else if(a==='home'){view='home';setView('home');R=null;render();window.scrollTo(0,0);}
+  else if(a==='retry')start(R.m.id,true);
+  else if(a==='resume'){var run=loadRun();if(run)resume(run);}
   else if(a==='help'){help=true;render();}
   else if(a==='reset'){resetAsk=true;render();}
   else if(a==='resetno'){resetAsk=false;render();}
-  else if(a==='resetyes'){resetAsk=false;S={p:{},streak:0,best:0,badges:[]};save();render();toast('Fortschritt gelöscht');}
+  else if(a==='resetyes'){resetAsk=false;S={p:{},streak:0,best:0,badges:[]};save();clearRun();render();toast('Fortschritt gelöscht');}
   else if(a==='key')pressKey(t.dataset.k);
   else if(a==='focus'){var i=+t.dataset.i;if(!R.done&&R.fst[i]!==1){R.focus=i;renderTask();}}
   else if(a==='sel'){R.sel=+t.dataset.i;R.fb=null;R.ask=false;renderTask();}
@@ -1699,10 +1749,12 @@ function onKey(ev){
 if(typeof document!=='undefined'){
   app=document.getElementById('app');
   S=load();
+  var run0=loadRun();
   document.addEventListener('click',onClick);
   document.addEventListener('keydown',onKey);
   document.addEventListener('input',function(ev){if(ev.target.id==='sl'&&R){R.n=parseFloat(ev.target.value);updateFig();}});
-  render();
+  if(run0&&lastView()!=='home'){resume(run0);setTimeout(function(){toast('Weiter, wo du aufgehört hast: '+R.m.title);},300);}
+  else render();
 }
 </script>
 </body>
